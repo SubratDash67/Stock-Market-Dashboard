@@ -4,7 +4,7 @@ A full-stack **Stock Market Dashboard** application that enables **dummy trading
 
 ---
 
-## 🌟 Features
+## 🌟 Features!
 
 1. **Dummy Trading**: Simulate buying and selling of stocks with virtual money.
 2. **ML Predictions**: Get future price predictions using machine learning models.
