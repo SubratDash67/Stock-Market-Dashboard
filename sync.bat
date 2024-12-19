@@ -1,8 +1,7 @@
 @echo off
 cd "C:\Users\KIIT\Desktop\Stock-Market-Dashboard"
-git fetch origin main
-git merge origin/main
-git add .
-git commit -m "Automated sync commit"
+git add sync.bat
+git commit -m "Commit local changes to sync.bat"
+git pull origin main
 git push origin main
 pause
