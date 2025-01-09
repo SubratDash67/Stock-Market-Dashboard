@@ -1,0 +1,55 @@
+/* File: src/pages/AboutUsPage.css */
+
+.about-us-page {
+    padding: 20px;
+}
+
+.platform-overview {
+    margin-bottom: 30px;
+}
+
+.platform-overview h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.platform-overview p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+}
+
+.key-features ul {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+.key-features ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.contact-info {
+    margin-top: 30px;
+}
+
+.contact-info a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.social-media {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-media img {
+    width: 32px;
+    height: 32px;
+}

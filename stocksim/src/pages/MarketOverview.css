@@ -1,0 +1,63 @@
+/* File: src/pages/MarketOverview.css */
+
+.market-overview {
+    padding: 20px;
+}
+
+.market-trends .indices {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.index-box {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    flex: 1;
+}
+
+.neo-screener {
+    margin-top: 30px;
+}
+
+.neo-screener input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.neo-screener table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.neo-screener th,
+.neo-screener td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.sector-screener select {
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
+.gainers-losers-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.gainers,
+.losers {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+}

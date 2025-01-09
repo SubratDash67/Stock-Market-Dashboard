@@ -1,0 +1,66 @@
+/* File: src/pages/TradePage.css */
+
+.trade-page {
+    padding: 20px;
+}
+
+.trade-interface form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.trade-interface label {
+    font-weight: bold;
+}
+
+.trade-interface input,
+.trade-interface select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.trade-interface button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.trade-interface button:hover {
+    background-color: #0056b3;
+}
+
+.options-chain table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.options-chain th,
+.options-chain td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.basket-orders {
+    margin: 20px 0;
+}
+
+.basket-orders button {
+    margin-right: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.basket-orders button:hover {
+    background-color: #0056b3;
+}
