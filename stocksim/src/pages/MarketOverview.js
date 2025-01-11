@@ -1,10 +1,47 @@
-// File: src/pages/MarketOverview.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./MarketOverview.css";
 
 const MarketOverview = () => {
-    // State for Neo-Screener filters
+    const [marketTrends, setMarketTrends] = useState([]);
+    const [gainers, setGainers] = useState([]);
+    const [losers, setLosers] = useState([]);
+    const [screenerData, setScreenerData] = useState([]);
     const [filter, setFilter] = useState("");
+
+    useEffect(() => {
+        // Fetch Market Trends
+        fetch("http://localhost:5000/market/trends")
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.status === "success") {
+                    setMarketTrends(data.data);
+                }
+            })
+            .catch((error) => console.error("Error fetching market trends:", error));
+
+        // Fetch Gainers and Losers
+        fetch("http://localhost:5000/market/gainers-losers")
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.status === "success") {
+                    setGainers(data.data.gainers);
+                    setLosers(data.data.losers);
+                }
+            })
+            .catch((error) => console.error("Error fetching gainers and losers:", error));
+    }, []);
+
+    useEffect(() => {
+        // Fetch Screener Data
+        fetch(`http://localhost:5000/market/screener?filter=${filter}`)
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.status === "success") {
+                    setScreenerData(data.data);
+                }
+            })
+            .catch((error) => console.error("Error fetching screener data:", error));
+    }, [filter]);
 
     return (
         <div className="market-overview">
@@ -12,18 +49,15 @@ const MarketOverview = () => {
             <section className="market-trends">
                 <h2>Market Trends</h2>
                 <div className="indices">
-                    <div className="index-box">
-                        <h3>NIFTY 50</h3>
-                        <p>+1.5% (17,300)</p>
-                    </div>
-                    <div className="index-box">
-                        <h3>SENSEX</h3>
-                        <p>+1.3% (58,500)</p>
-                    </div>
-                    <div className="index-box">
-                        <h3>NASDAQ</h3>
-                        <p>-0.8% (14,000)</p>
-                    </div>
+                    {Object.entries(marketTrends).map(([indexName, trend]) => (
+                        <div key={indexName} className="index-box">
+                            <h3>{indexName}</h3>
+                            <p>
+                                {trend.percent_change >= 0 ? "+" : ""}
+                                {trend.percent_change.toFixed(2)}% ({trend.price.toFixed(2)})
+                            </p>
+                        </div>
+                    ))}
                 </div>
             </section>
 
@@ -32,7 +66,7 @@ const MarketOverview = () => {
                 <h2>Neo-Screener</h2>
                 <input
                     type="text"
-                    placeholder="Filter by sector, industry, etc."
+                    placeholder="Filter by symbol, industry, etc."
                     value={filter}
                     onChange={(e) => setFilter(e.target.value)}
                 />
@@ -46,31 +80,16 @@ const MarketOverview = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    {/* Placeholder data */}
-                    <tr>
-                        <td>TCS</td>
-                        <td>Rs. 3,000</td>
-                        <td>+1.2%</td>
-                        <td>1.5M</td>
-                    </tr>
-                    <tr>
-                        <td>INFY</td>
-                        <td>Rs. 1,500</td>
-                        <td>-0.5%</td>
-                        <td>900K</td>
-                    </tr>
+                    {screenerData.map((stock) => (
+                        <tr key={stock.symbol}>
+                            <td>{stock.symbol}</td>
+                            <td>{stock.price.toFixed(2)}</td>
+                            <td>{stock.percent_change.toFixed(2)}%</td>
+                            <td>{stock.volume}</td>
+                        </tr>
+                    ))}
                     </tbody>
                 </table>
-            </section>
-
-            {/* Sector/Industry Screener */}
-            <section className="sector-screener">
-                <h2>Sector Screener</h2>
-                <select>
-                    <option value="IT">IT</option>
-                    <option value="Banking">Banking</option>
-                    <option value="Pharma">Pharma</option>
-                </select>
             </section>
 
             {/* Gainers & Losers Section */}
@@ -80,15 +99,21 @@ const MarketOverview = () => {
                     <div className="gainers">
                         <h3>Top Gainers</h3>
                         <ul>
-                            <li>Stock A: +5.6%</li>
-                            <li>Stock B: +4.8%</li>
+                            {gainers.map((gainer) => (
+                                <li key={gainer.symbol}>
+                                    {gainer.symbol}: +{gainer.percent_change.toFixed(2)}%
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <div className="losers">
                         <h3>Top Losers</h3>
                         <ul>
-                            <li>Stock X: -3.2%</li>
-                            <li>Stock Y: -2.7%</li>
+                            {losers.map((loser) => (
+                                <li key={loser.symbol}>
+                                    {loser.symbol}: {loser.percent_change.toFixed(2)}%
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>
