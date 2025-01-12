@@ -31,3 +31,5 @@ def screener():
         return jsonify({"status": "success", "data": stocks}), 200
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
+
+

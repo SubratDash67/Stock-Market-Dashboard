@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Chart as ChartJS, CategoryScale, LinearScale, LineElement, PointElement, Title, Tooltip, Legend } from "chart.js";
+import { Line } from "react-chartjs-2";
 import "./MarketOverview.css";
 
 const MarketOverview = () => {
@@ -43,6 +45,8 @@ const MarketOverview = () => {
             .catch((error) => console.error("Error fetching screener data:", error));
     }, [filter]);
 
+    ChartJS.register(CategoryScale, LinearScale, LineElement, PointElement, Title, Tooltip, Legend);
+
     return (
         <div className="market-overview">
             {/* Market Trends Section */}
@@ -50,26 +54,95 @@ const MarketOverview = () => {
                 <h2>Market Trends</h2>
                 <div className="indices">
                     {Object.entries(marketTrends).map(([indexName, trend]) => (
-                        <div key={indexName} className="index-box">
-                            <h3>{indexName}</h3>
-                            <p>
-                                {trend.percent_change >= 0 ? "+" : ""}
-                                {trend.percent_change.toFixed(2)}% ({trend.price.toFixed(2)})
-                            </p>
+                        <div
+                            key={indexName}
+                            className="index-box"
+                            style={{ width: "300px", height: "275px", margin: "10px" }} // Adjusted container height
+                        >
+                            <h3 style={{ fontSize: "1rem" }}>{indexName}</h3>
+                            {trend.error ? ( // Check for errors from backend data
+                                <p className="error-message" style={{ fontSize: "0.9rem", color: "red" }}>
+                                    {trend.error}
+                                </p>
+                            ) : (
+                                <>
+                                    {/* Current Price Section */}
+                                    <div style={{ marginBottom: "10px" }}>
+                                        <h4 style={{ fontSize: "1rem", margin: 0 }}>
+                                            {`${
+                                                trend.price ? trend.price.toLocaleString("en-US", { maximumFractionDigits: 2 }) : "--"
+                                            }`}
+                                        </h4>
+                                        <p
+                                            style={{
+                                                fontSize: "0.9rem",
+                                                color: trend.change >= 0 ? "green" : "red",
+                                                margin: 0,
+                                            }}
+                                        >
+                                            {trend.change >= 0 ? "+" : ""}
+                                            {trend.change?.toFixed(2)} ({trend.percent_change?.toFixed(2)}%)
+                                        </p>
+                                    </div>
+
+                                    {/* Line Chart */}
+                                    <Line
+                                        data={{
+                                            labels: trend.dates,
+                                            datasets: [
+                                                {
+                                                    label: `${indexName} Price`,
+                                                    data: trend.prices,
+                                                    borderColor: "rgba(75,192,192,1)",
+                                                    borderWidth: 1, // Thinner line
+                                                    pointRadius: 1, // Smaller points
+                                                },
+                                            ],
+                                        }}
+                                        options={{
+                                            responsive: true,
+                                            maintainAspectRatio: true, // Ensures the chart fits the container
+                                            plugins: {
+                                                legend: { display: false }, // Hide legend to reduce visual clutter
+                                                tooltip: { mode: "index", intersect: false },
+                                            },
+
+                                            scales: {
+                                                x: {
+                                                    title: { display: true, text: "Date", font: { size: 10 } },
+                                                    ticks: { maxRotation: 45, font: { size: 8 } }, // Smaller x-axis labels
+                                                },
+                                                y: {
+                                                    title: { display: true, text: "Price", font: { size: 10 } },
+                                                    ticks: { font: { size: 8 } }, // Smaller y-axis labels
+                                                },
+                                            },
+                                        }}
+                                    />
+                                </>
+                            )}
                         </div>
                     ))}
                 </div>
             </section>
 
+
             {/* Neo-Screener Section */}
             <section className="neo-screener">
                 <h2>Neo-Screener</h2>
-                <input
-                    type="text"
-                    placeholder="Filter by symbol, industry, etc."
-                    value={filter}
-                    onChange={(e) => setFilter(e.target.value)}
-                />
+                <div className="neo-screener-input">
+                    <input
+                        type="text"
+                        placeholder="Filter by symbol, industry, etc."
+                        value={filter}
+                        onChange={(e) => setFilter(e.target.value)}
+                    />
+                    <div className="neo-screener-buttons">
+                        <button onClick={() => setFilter("growth")}>Growth Stock</button>
+                        <button onClick={() => setFilter("stability")}>Stability Stock</button>
+                        <button onClick={() => setFilter("dividend")}>Dividend Stock</button>
+                    </div>
+                </div>
                 <table>
                     <thead>
                     <tr>
@@ -91,6 +164,7 @@ const MarketOverview = () => {
                     </tbody>
                 </table>
             </section>
+
 
             {/* Gainers & Losers Section */}
             <section className="gainers-losers">

@@ -3,6 +3,7 @@ import yfinance as yf
 import json
 import os
 from datetime import datetime, timedelta
+from typing import List, Dict
 
 CACHE_FILE = "stock_data.json"
 CACHE_EXPIRY_DAYS = 1
@@ -10,29 +11,38 @@ CACHE_EXPIRY_DAYS = 1
 
 def get_market_trends():
     """
-    Fetch real-time data for market indices.
-    Returns the latest price, change, and percent change.
+    Fetch historical and current data for multiple indices.
     """
     indices = {
-        "NIFTY 50": "^NSEI",  # Nifty 50 Index
-        "SENSEX": "^BSESN",   # Sensex Index
-        "NASDAQ": "^IXIC"     # NASDAQ Composite Index
+        "NIFTY 50": "^NSEI",
+        "SENSEX": "^BSESN",
+        "NASDAQ": "^IXIC"
     }
     trends = {}
 
     for index_name, symbol in indices.items():
         try:
             ticker = yf.Ticker(symbol)
-            history = ticker.history(period="1d")
+
+            # Fetch last 7 days of history
+            history = ticker.history(period="5d")
             if not history.empty:
-                latest_data = history.iloc[-1]
                 trends[index_name] = {
-                    "price": latest_data["Close"],
-                    "change": latest_data["Close"] - latest_data["Open"],
-                    "percent_change": ((latest_data["Close"] - latest_data["Open"]) / latest_data["Open"]) * 100
+                    "dates": history.index.strftime("%Y-%m-%d").tolist(),
+                    "prices": history["Close"].tolist()
                 }
             else:
                 trends[index_name] = {"error": "No data available"}
+
+            # Fetch current day price data
+            today_data = ticker.history(period="1d")
+            if not today_data.empty:
+                latest_data = today_data.iloc[-1]
+                trends[index_name].update({
+                    "price": latest_data["Close"],
+                    "change": latest_data["Close"] - latest_data["Open"],
+                    "percent_change": ((latest_data["Close"] - latest_data["Open"]) / latest_data["Open"]) * 100
+                })
         except Exception as e:
             trends[index_name] = {"error": str(e)}
 
@@ -132,26 +142,50 @@ def save_to_cache(data):
         json.dump(data, f, indent=4)
 
 
-def filter_and_rank_stocks(data, filter_query):
+def filter_and_rank_stocks(data: List[Dict], filter_query: str) -> List[Dict]:
     """
-    Filter stock data based on the query and rank by the scoring logic.
+    Filters and ranks stock data based on the query.
+    Parameters:
+        data: List of stock dictionaries with keys like 'symbol', 'pe_ratio', 'beta', 'dividend_yield', etc.
+        filter_query: A string indicating the filtering criteria ("growth", "stability", "dividend", or a custom symbol search).
+    Returns:
+        A list of the top 6 stocks after filtering and ranking.
     """
-    # Filter by query
-    if filter_query:
-        data = [stock for stock in data if filter_query.lower() in stock["symbol"].lower()]
+    # Define filtering criteria for predefined queries
+    criteria_map = {
+        "growth": lambda stock: stock.get("pe_ratio", 0) > 20,
+        "stability": lambda stock: stock.get("beta", float('inf')) < 1,
+        "dividend": lambda stock: stock.get("dividend_yield", 0) > 0.03,
+    }
 
-    # Ranking logic
-    if data:
-        data.sort(
-            key=lambda stock: (
-                stock["percent_change"] * 0.5 +
-                (stock["dividend_yield"] or 0) * 10 +
-                stock["market_cap"] / 1e12 -
-                abs((stock["pe_ratio"] or 0) - 15) * 0.1
-            ),
-            reverse=True
-        )
-    return data[:6]  # Return top 6
+    # Determine filtering function
+    filter_func = criteria_map.get(filter_query.lower(),
+                                   lambda stock: filter_query.lower() in stock.get("symbol", "").lower())
+
+    # Apply filtering
+    data = [stock for stock in data if filter_func(stock)]
+
+    # Ranking weights
+    weights = {
+        "percent_change": 0.5,
+        "dividend_yield": 10,
+        "market_cap": 1,
+        "pe_ratio_deviation": 0.1,
+    }
+
+    # Rank stocks based on scoring logic
+    data.sort(
+        key=lambda stock: (
+            (stock.get("percent_change", 0) * weights["percent_change"]) +
+            (stock.get("dividend_yield", 0) * weights["dividend_yield"]) +
+            (stock.get("market_cap", 0) / 1e12 * weights["market_cap"]) -
+            abs((stock.get("pe_ratio", 15) - 15) * weights["pe_ratio_deviation"])
+        ),
+        reverse=True
+    )
+
+    return data[:6]  # Return top 6 results
+
 
 
 def get_filtered_stocks(filter_query):
