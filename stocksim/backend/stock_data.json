@@ -12,7 +12,7 @@
         "beta": 0.518,
         "pb_ratio": 17.055641,
         "eps": 134.79,
-        "last_updated": "2025-01-11T10:47:42.153034"
+        "last_updated": "2025-01-12T20:03:51.427704"
     },
     {
         "symbol": "INFY.NS",
@@ -20,44 +20,44 @@
         "percent_change": 1.5462029515681466,
         "volume": 8036913.0,
         "market_cap": 8147166035968,
-        "pe_ratio": 29.734692,
+        "pe_ratio": 29.76169,
         "52_week_high": 2006.45,
         "52_week_low": 1358.35,
-        "dividend_yield": 0.0214,
+        "dividend_yield": 0.0208,
         "beta": 0.626,
         "pb_ratio": 755.06714,
-        "eps": 66.15,
-        "last_updated": "2025-01-11T10:47:42.545142"
+        "eps": 66.09,
+        "last_updated": "2025-01-12T20:03:51.882394"
     },
     {
         "symbol": "RELIANCE.NS",
         "price": 1241.9000244140625,
         "percent_change": -0.9530606854532704,
         "volume": 8120332.0,
-        "market_cap": 16979753697280,
-        "pe_ratio": 24.997988,
+        "market_cap": 16805887213568,
+        "pe_ratio": 24.753838,
         "52_week_high": 1608.8,
         "52_week_low": 1201.5,
         "dividend_yield": 0.004,
         "beta": 0.635,
         "pb_ratio": 2.050785,
-        "eps": 49.68,
-        "last_updated": "2025-01-11T10:47:42.776536"
+        "eps": 50.17,
+        "last_updated": "2025-01-12T20:03:52.182957"
     },
     {
         "symbol": "WIPRO.NS",
         "price": 300.54998779296875,
         "percent_change": 2.1236834044304103,
         "volume": 19505556.0,
-        "market_cap": 3143121764352,
-        "pe_ratio": 26.112076,
+        "market_cap": 3143662829568,
+        "pe_ratio": 26.810883,
         "52_week_high": 320.0,
         "52_week_low": 208.5,
         "dividend_yield": 0.0017,
         "beta": 0.708,
         "pb_ratio": 1.9191228,
-        "eps": 11.51,
-        "last_updated": "2025-01-11T10:47:43.014690"
+        "eps": 11.21,
+        "last_updated": "2025-01-12T20:03:52.534129"
     },
     {
         "symbol": "HDFCBANK.NS",
@@ -65,21 +65,21 @@
         "percent_change": -0.8527827648114902,
         "volume": 8726640.0,
         "market_cap": 12671320588288,
-        "pe_ratio": 18.777626,
+        "pe_ratio": 18.76274,
         "52_week_high": 1880.0,
         "52_week_low": 1363.55,
-        "dividend_yield": 0.0117,
+        "dividend_yield": 0.0117999995,
         "beta": 0.833,
         "pb_ratio": 2.6196284,
-        "eps": 88.23,
-        "last_updated": "2025-01-11T10:47:43.239603"
+        "eps": 88.3,
+        "last_updated": "2025-01-12T20:03:52.766497"
     },
     {
         "symbol": "ITC.NS",
         "price": 444.8999938964844,
         "percent_change": -1.1223509664498592,
         "volume": 9145729.0,
-        "market_cap": 5631499567104,
+        "market_cap": 5566455349248,
         "pe_ratio": 27.095005,
         "52_week_high": 528.5,
         "52_week_low": 399.35,
@@ -87,7 +87,7 @@
         "beta": 0.241,
         "pb_ratio": 7.3967547,
         "eps": 16.42,
-        "last_updated": "2025-01-11T10:47:43.521616"
+        "last_updated": "2025-01-12T20:03:53.065621"
     },
     {
         "symbol": "ICICIBANK.NS",
@@ -95,29 +95,29 @@
         "percent_change": -0.7267692147785941,
         "volume": 7854524.0,
         "market_cap": 8823953686528,
-        "pe_ratio": 18.894178,
+        "pe_ratio": 18.902752,
         "52_week_high": 1362.35,
         "52_week_low": 970.15,
-        "dividend_yield": 0.007900001,
+        "dividend_yield": 0.008,
         "beta": 0.829,
         "pb_ratio": 3.1447434,
-        "eps": 66.15,
-        "last_updated": "2025-01-11T10:47:43.742665"
+        "eps": 66.12,
+        "last_updated": "2025-01-12T20:03:53.372182"
     },
     {
         "symbol": "SBIN.NS",
         "price": 743.25,
         "percent_change": -2.248961154073819,
         "volume": 11779296.0,
-        "market_cap": 6786727280640,
-        "pe_ratio": 9.487491,
+        "market_cap": 6633223618560,
+        "pe_ratio": 9.267457,
         "52_week_high": 912.0,
         "52_week_low": 600.65,
-        "dividend_yield": 0.018,
+        "dividend_yield": 0.0184,
         "beta": 0.76,
         "pb_ratio": 1.432506,
-        "eps": 78.34,
-        "last_updated": "2025-01-11T10:47:44.032200"
+        "eps": 80.2,
+        "last_updated": "2025-01-12T20:03:53.602116"
     },
     {
         "symbol": "HINDUNILVR.NS",
@@ -132,29 +132,29 @@
         "beta": 0.147,
         "pb_ratio": 11.297627,
         "eps": 43.71,
-        "last_updated": "2025-01-11T10:47:44.424898"
+        "last_updated": "2025-01-12T20:03:53.921746"
     },
     {
         "symbol": "AXISBANK.NS",
         "price": 1040.699951171875,
         "percent_change": -1.472193971893491,
         "volume": 5612886.0,
-        "market_cap": 3221236744192,
-        "pe_ratio": 11.586506,
+        "market_cap": 3221548957696,
+        "pe_ratio": 11.587796,
         "52_week_high": 1339.65,
         "52_week_low": 995.7,
-        "dividend_yield": 0.00090000004,
+        "dividend_yield": 0.001,
         "beta": 0.944,
         "pb_ratio": 1.8660101,
-        "eps": 89.82,
-        "last_updated": "2025-01-11T10:47:44.734181"
+        "eps": 89.81,
+        "last_updated": "2025-01-12T20:03:54.209544"
     },
     {
         "symbol": "KOTAKBANK.NS",
         "price": 1756.199951171875,
         "percent_change": -1.56933083545986,
         "volume": 3502618.0,
-        "market_cap": 3559202488320,
+        "market_cap": 3491624124416,
         "pe_ratio": 16.000364,
         "52_week_high": 1942.0,
         "52_week_low": 1543.85,
@@ -162,7 +162,7 @@
         "beta": 0.562,
         "pb_ratio": 2.3701522,
         "eps": 109.76,
-        "last_updated": "2025-01-11T10:47:44.970653"
+        "last_updated": "2025-01-12T20:03:54.544331"
     },
     {
         "symbol": "BAJFINANCE.NS",
@@ -177,14 +177,14 @@
         "beta": 1.048,
         "pb_ratio": 5.193645,
         "eps": 248.52,
-        "last_updated": "2025-01-11T10:47:45.221607"
+        "last_updated": "2025-01-12T20:03:54.895859"
     },
     {
         "symbol": "BHARTIARTL.NS",
         "price": 1615.9000244140625,
         "percent_change": 0.4912950506257774,
         "volume": 4145892.0,
-        "market_cap": 9615008858112,
+        "market_cap": 9667671490560,
         "pe_ratio": 78.1383,
         "52_week_high": 1779.0,
         "52_week_low": 1074.55,
@@ -192,14 +192,14 @@
         "beta": 0.291,
         "pb_ratio": 10.734952,
         "eps": 20.68,
-        "last_updated": "2025-01-11T10:47:45.618724"
+        "last_updated": "2025-01-12T20:03:55.149307"
     },
     {
         "symbol": "MARUTI.NS",
         "price": 11631.099609375,
         "percent_change": -0.5038527855004278,
         "volume": 218246.0,
-        "market_cap": 3691257266176,
+        "market_cap": 3656852701184,
         "pe_ratio": 26.109726,
         "52_week_high": 13680.0,
         "52_week_low": 9737.65,
@@ -207,14 +207,14 @@
         "beta": 0.652,
         "pb_ratio": 4.102976,
         "eps": 445.47,
-        "last_updated": "2025-01-11T10:47:45.902985"
+        "last_updated": "2025-01-12T20:03:55.596812"
     },
     {
         "symbol": "ASIANPAINT.NS",
         "price": 2320.75,
         "percent_change": -0.6358150811498902,
         "volume": 1214334.0,
-        "market_cap": 2253524828160,
+        "market_cap": 2224907616256,
         "pe_ratio": 48.775745,
         "52_week_high": 3394.9,
         "52_week_low": 2256.5,
@@ -222,14 +222,14 @@
         "beta": 0.366,
         "pb_ratio": 12.336803,
         "eps": 47.58,
-        "last_updated": "2025-01-11T10:47:46.243218"
+        "last_updated": "2025-01-12T20:03:55.868257"
     },
     {
         "symbol": "ADANIENT.NS",
         "price": 2374.39990234375,
         "percent_change": -4.258068453881048,
         "volume": 1418808.0,
-        "market_cap": 2865259610112,
+        "market_cap": 2740484833280,
         "pe_ratio": 51.018475,
         "52_week_high": 3743.9,
         "52_week_low": 2025.0,
@@ -237,14 +237,14 @@
         "beta": 0.879,
         "pb_ratio": 7.105769,
         "eps": 46.54,
-        "last_updated": "2025-01-11T10:47:46.576357"
+        "last_updated": "2025-01-12T20:03:56.250506"
     },
     {
         "symbol": "ADANIGREEN.NS",
         "price": 943.0499877929688,
         "percent_change": -2.783361717413106,
         "volume": 2096676.0,
-        "market_cap": 1548789874688,
+        "market_cap": 1493904392192,
         "pe_ratio": 149.21677,
         "52_week_high": 2174.1,
         "52_week_low": 870.25,
@@ -252,14 +252,14 @@
         "beta": 1.016,
         "pb_ratio": 15.7761345,
         "eps": 6.32,
-        "last_updated": "2025-01-11T10:47:46.904468"
+        "last_updated": "2025-01-12T20:03:56.601894"
     },
     {
         "symbol": "ULTRACEMCO.NS",
         "price": 10865.2001953125,
         "percent_change": -3.0174262351326626,
         "volume": 228618.0,
-        "market_cap": 3247554166784,
+        "market_cap": 3131709063168,
         "pe_ratio": 47.847454,
         "52_week_high": 12145.35,
         "52_week_low": 9250.0,
@@ -267,14 +267,14 @@
         "beta": 0.555,
         "pb_ratio": 5.103515,
         "eps": 227.08,
-        "last_updated": "2025-01-11T10:47:47.187911"
+        "last_updated": "2025-01-12T20:03:56.904572"
     },
     {
         "symbol": "TITAN.NS",
         "price": 3440.25,
         "percent_change": -0.6282495667244368,
         "volume": 570060.0,
-        "market_cap": 3093169963008,
+        "market_cap": 3051656577024,
         "pe_ratio": 94.330956,
         "52_week_high": 3886.95,
         "52_week_low": 3055.65,
@@ -282,14 +282,14 @@
         "beta": 0.517,
         "pb_ratio": 31.32997,
         "eps": 36.47,
-        "last_updated": "2025-01-11T10:47:47.436310"
+        "last_updated": "2025-01-12T20:03:57.207824"
     },
     {
         "symbol": "SUNPHARMA.NS",
         "price": 1784.800048828125,
         "percent_change": -2.226842884279253,
         "volume": 857827.0,
-        "market_cap": 4382023221248,
+        "market_cap": 4282324353024,
         "pe_ratio": 38.757874,
         "52_week_high": 1960.35,
         "52_week_low": 1290.0,
@@ -297,14 +297,14 @@
         "beta": 0.547,
         "pb_ratio": 6.1817465,
         "eps": 46.05,
-        "last_updated": "2025-01-11T10:47:47.730107"
+        "last_updated": "2025-01-12T20:03:57.452994"
     },
     {
         "symbol": "ONGC.NS",
         "price": 263.0199890136719,
         "percent_change": -0.37121628270004736,
         "volume": 13053552.0,
-        "market_cap": 3309869727744,
+        "market_cap": 3309238484992,
         "pe_ratio": 8.050811,
         "52_week_high": 345.0,
         "52_week_low": 223.0,
@@ -312,14 +312,14 @@
         "beta": 0.653,
         "pb_ratio": 0.9387704,
         "eps": 32.67,
-        "last_updated": "2025-01-11T10:47:48.086006"
+        "last_updated": "2025-01-12T20:03:57.756636"
     },
     {
         "symbol": "NTPC.NS",
         "price": 308.25,
         "percent_change": -3.777120609638982,
         "volume": 15941143.0,
-        "market_cap": 3105834663936,
+        "market_cap": 2988998393856,
         "pe_ratio": 15.647207,
         "52_week_high": 448.45,
         "52_week_low": 296.55,
@@ -327,14 +327,14 @@
         "beta": 0.463,
         "pb_ratio": 1.7762986,
         "eps": 19.7,
-        "last_updated": "2025-01-11T10:47:48.326716"
+        "last_updated": "2025-01-12T20:03:58.059534"
     },
     {
         "symbol": "POWERGRID.NS",
         "price": 299.70001220703125,
         "percent_change": -1.4306777702946167,
         "volume": 6540783.0,
-        "market_cap": 2839474864128,
+        "market_cap": 2788321918976,
         "pe_ratio": 17.892538,
         "52_week_high": 366.25,
         "52_week_low": 226.05,
@@ -342,14 +342,14 @@
         "beta": 0.389,
         "pb_ratio": 3.026478,
         "eps": 16.75,
-        "last_updated": "2025-01-11T10:47:48.575923"
+        "last_updated": "2025-01-12T20:03:58.394692"
     },
     {
         "symbol": "JSWSTEEL.NS",
         "price": 900.0999755859375,
         "percent_change": 1.0269895340413397,
         "volume": 1614629.0,
-        "market_cap": 2195865862144,
+        "market_cap": 2198422159360,
         "pe_ratio": 44.057755,
         "52_week_high": 1063.0,
         "52_week_low": 761.75,
@@ -357,14 +357,14 @@
         "beta": 1.076,
         "pb_ratio": 2.7555573,
         "eps": 20.43,
-        "last_updated": "2025-01-11T10:47:48.973923"
+        "last_updated": "2025-01-12T20:03:58.698574"
     },
     {
         "symbol": "TATAMOTORS.NS",
         "price": 774.6500244140625,
         "percent_change": -0.6922586325761781,
         "volume": 11144005.0,
-        "market_cap": 2871643078656,
+        "market_cap": 2851579625472,
         "pe_ratio": 8.606266,
         "52_week_high": 1179.0,
         "52_week_low": 717.7,
@@ -372,14 +372,14 @@
         "beta": 1.618,
         "pb_ratio": 2.6362538,
         "eps": 90.01,
-        "last_updated": "2025-01-11T10:47:49.317862"
+        "last_updated": "2025-01-12T20:03:59.020648"
     },
     {
         "symbol": "HEROMOTOCO.NS",
         "price": 4122.2001953125,
         "percent_change": -0.550055601628468,
         "volume": 355269.0,
-        "market_cap": 828248948736,
+        "market_cap": 824440061952,
         "pe_ratio": 19.960295,
         "52_week_high": 6246.25,
         "52_week_low": 4086.4,
@@ -387,29 +387,29 @@
         "beta": 0.974,
         "pb_ratio": 4.656317,
         "eps": 206.52,
-        "last_updated": "2025-01-11T10:47:49.565024"
+        "last_updated": "2025-01-12T20:03:59.399099"
     },
     {
         "symbol": "DRREDDY.NS",
         "price": 1354.4000244140625,
         "percent_change": -0.8564491165338571,
         "volume": 1582776.0,
-        "market_cap": 1142659874816,
-        "pe_ratio": 20.70315,
+        "market_cap": 1128330297344,
+        "pe_ratio": 20.449947,
         "52_week_high": 1421.49,
         "52_week_low": 1104.13,
-        "dividend_yield": 0.0058,
+        "dividend_yield": 0.0058999998,
         "beta": 0.328,
         "pb_ratio": 3.6951048,
-        "eps": 65.42,
-        "last_updated": "2025-01-11T10:47:49.947198"
+        "eps": 66.23,
+        "last_updated": "2025-01-12T20:03:59.733435"
     },
     {
         "symbol": "DIVISLAB.NS",
         "price": 5771.35009765625,
         "percent_change": -0.49396383351293105,
         "volume": 384413.0,
-        "market_cap": 1546236985344,
+        "market_cap": 1532114501632,
         "pe_ratio": 83.32876,
         "52_week_high": 6285.45,
         "52_week_low": 3350.0,
@@ -417,14 +417,14 @@
         "beta": 0.349,
         "pb_ratio": 11.176015,
         "eps": 69.26,
-        "last_updated": "2025-01-11T10:47:50.363044"
+        "last_updated": "2025-01-12T20:03:59.972294"
     },
     {
         "symbol": "COALINDIA.NS",
         "price": 368.5,
         "percent_change": -0.7808276640124701,
         "volume": 4893721.0,
-        "market_cap": 2293768650752,
+        "market_cap": 2270966054912,
         "pe_ratio": 6.293766,
         "52_week_high": 543.55,
         "52_week_low": 364.7,
@@ -432,7 +432,7 @@
         "beta": 0.244,
         "pb_ratio": 2.359593,
         "eps": 58.55,
-        "last_updated": "2025-01-11T10:47:50.611074"
+        "last_updated": "2025-01-12T20:04:00.196473"
     },
     {
         "symbol": "LT.NS",
@@ -447,14 +447,14 @@
         "beta": 0.717,
         "pb_ratio": 5.4497466,
         "eps": 98.3,
-        "last_updated": "2025-01-11T10:47:50.943127"
+        "last_updated": "2025-01-12T20:04:00.499957"
     },
     {
         "symbol": "GRASIM.NS",
         "price": 2364.10009765625,
         "percent_change": -1.4958292643229165,
         "volume": 413994.0,
-        "market_cap": 1620507885568,
+        "market_cap": 1590117269504,
         "pe_ratio": 34.96672,
         "52_week_high": 2877.75,
         "52_week_low": 2016.55,
@@ -462,14 +462,14 @@
         "beta": 0.524,
         "pb_ratio": 1.8091726,
         "eps": 67.61,
-        "last_updated": "2025-01-11T10:47:51.265792"
+        "last_updated": "2025-01-12T20:04:00.759049"
     },
     {
         "symbol": "EICHERMOT.NS",
         "price": 5058.4501953125,
         "percent_change": -1.7776661104368934,
         "volume": 316803.0,
-        "market_cap": 1409011023872,
+        "market_cap": 1386683039744,
         "pe_ratio": 32.57422,
         "52_week_high": 5385.7,
         "52_week_low": 3562.45,
@@ -477,7 +477,7 @@
         "beta": 0.524,
         "pb_ratio": 7.304136,
         "eps": 155.29,
-        "last_updated": "2025-01-11T10:47:51.534270"
+        "last_updated": "2025-01-12T20:04:01.009275"
     },
     {
         "symbol": "BRITANNIA.NS",
@@ -492,7 +492,7 @@
         "beta": 0.558,
         "pb_ratio": 37.06522,
         "eps": 88.41,
-        "last_updated": "2025-01-11T10:47:51.847387"
+        "last_updated": "2025-01-12T20:04:01.247906"
     },
     {
         "symbol": "CIPLA.NS",
@@ -507,14 +507,14 @@
         "beta": 0.344,
         "pb_ratio": 4.1821847,
         "eps": 55.37,
-        "last_updated": "2025-01-11T10:47:52.153005"
+        "last_updated": "2025-01-12T20:04:01.484770"
     },
     {
         "symbol": "BAJAJ-AUTO.NS",
         "price": 8764.0,
         "percent_change": -0.7749853528619662,
         "volume": 350859.0,
-        "market_cap": 2468327981056,
+        "market_cap": 2447706423296,
         "pe_ratio": 33.445274,
         "52_week_high": 12774.0,
         "52_week_low": 6936.55,
@@ -522,14 +522,14 @@
         "beta": 1.047,
         "pb_ratio": 7.886188,
         "eps": 262.04,
-        "last_updated": "2025-01-11T10:47:52.456859"
+        "last_updated": "2025-01-12T20:04:01.729047"
     },
     {
         "symbol": "INDUSINDBK.NS",
         "price": 937.5999755859375,
         "percent_change": -3.514280876157705,
         "volume": 5611356.0,
-        "market_cap": 764172107776,
+        "market_cap": 730439155712,
         "pe_ratio": 8.960244,
         "52_week_high": 1694.5,
         "52_week_low": 926.45,
@@ -537,14 +537,14 @@
         "beta": 1.433,
         "pb_ratio": 1.1116605,
         "eps": 104.64,
-        "last_updated": "2025-01-11T10:47:52.768768"
+        "last_updated": "2025-01-12T20:04:01.989768"
     },
     {
         "symbol": "BPCL.NS",
         "price": 277.6499938964844,
         "percent_change": -1.0160449566900625,
         "volume": 9073218.0,
-        "market_cap": 1215432228864,
+        "market_cap": 1204587200512,
         "pe_ratio": 9.041029,
         "52_week_high": 376.0,
         "52_week_low": 227.825,
@@ -552,7 +552,7 @@
         "beta": 1.068,
         "pb_ratio": 1.5375202,
         "eps": 30.71,
-        "last_updated": "2025-01-11T10:47:53.035520"
+        "last_updated": "2025-01-12T20:04:02.294034"
     },
     {
         "symbol": "HCLTECH.NS",
@@ -567,14 +567,14 @@
         "beta": 0.628,
         "pb_ratio": 657.3641,
         "eps": 62.05,
-        "last_updated": "2025-01-11T10:47:53.304389"
+        "last_updated": "2025-01-12T20:04:02.537977"
     },
     {
         "symbol": "NESTLEIND.NS",
         "price": 2247.89990234375,
         "percent_change": -1.0629231735819873,
         "volume": 809854.0,
-        "market_cap": 2175187025920,
+        "market_cap": 2167328473088,
         "pe_ratio": 72.983765,
         "52_week_high": 2778.0,
         "52_week_low": 2145.4,
@@ -582,29 +582,29 @@
         "beta": 0.141,
         "pb_ratio": 55.518784,
         "eps": 30.8,
-        "last_updated": "2025-01-11T10:47:53.630830"
+        "last_updated": "2025-01-12T20:04:02.754872"
     },
     {
         "symbol": "M&M.NS",
         "price": 3092.85009765625,
         "percent_change": -0.5514438052652733,
         "volume": 2341303.0,
-        "market_cap": 3747699490816,
-        "pe_ratio": 30.95946,
+        "market_cap": 3707368636416,
+        "pe_ratio": 30.579891,
         "52_week_high": 3237.05,
         "52_week_low": 1575.0,
-        "dividend_yield": 0.0067000003,
+        "dividend_yield": 0.0068,
         "beta": 1.071,
         "pb_ratio": 4.89262,
-        "eps": 99.9,
-        "last_updated": "2025-01-11T10:47:54.041552"
+        "eps": 101.14,
+        "last_updated": "2025-01-12T20:04:03.008191"
     },
     {
         "symbol": "APOLLOHOSP.NS",
         "price": 7036.75,
         "percent_change": -0.7510578279266573,
         "volume": 185381.0,
-        "market_cap": 1019653193728,
+        "market_cap": 1011779043328,
         "pe_ratio": 85.470055,
         "52_week_high": 7545.35,
         "52_week_low": 5693.2,
@@ -612,14 +612,14 @@
         "beta": 0.595,
         "pb_ratio": 14.092807,
         "eps": 82.33,
-        "last_updated": "2025-01-11T10:47:54.419814"
+        "last_updated": "2025-01-12T20:04:03.344423"
     },
     {
         "symbol": "SHREECEM.NS",
         "price": 25738.30078125,
         "percent_change": -0.8157966040462428,
         "volume": 29569.0,
-        "market_cap": 937288531968,
+        "market_cap": 928655933440,
         "pe_ratio": 53.76371,
         "52_week_high": 30737.75,
         "52_week_low": 23500.0,
@@ -627,22 +627,22 @@
         "beta": 0.397,
         "pb_ratio": 4.3224354,
         "eps": 478.73,
-        "last_updated": "2025-01-11T10:47:54.641427"
+        "last_updated": "2025-01-12T20:04:03.582488"
     },
     {
         "symbol": "UPL.NS",
         "price": 548.8499755859375,
         "percent_change": 0.540383044503672,
         "volume": 1992839.0,
-        "market_cap": 434583240704,
-        "pe_ratio": 6.23056,
+        "market_cap": 437112340480,
+        "pe_ratio": 6.269705,
         "52_week_high": 625.0,
         "52_week_low": 447.8,
-        "dividend_yield": 0.0018000001,
+        "dividend_yield": 0.0017,
         "beta": 1.047,
         "pb_ratio": 1.7209643,
-        "eps": 88.09,
-        "last_updated": "2025-01-11T10:47:55.062938"
+        "eps": 87.54,
+        "last_updated": "2025-01-12T20:04:03.804831"
     },
     {
         "symbol": "TECHM.NS",
@@ -657,14 +657,14 @@
         "beta": 0.588,
         "pb_ratio": 5.7098665,
         "eps": 36.84,
-        "last_updated": "2025-01-11T10:47:55.368582"
+        "last_updated": "2025-01-12T20:04:04.173157"
     },
     {
         "symbol": "HINDALCO.NS",
         "price": 574.4500122070312,
         "percent_change": -1.9709876779810156,
         "volume": 10613705.0,
-        "market_cap": 1307936423936,
+        "market_cap": 1275083751424,
         "pe_ratio": 10.236101,
         "52_week_high": 772.65,
         "52_week_low": 496.35,
@@ -672,14 +672,14 @@
         "beta": 1.446,
         "pb_ratio": 1.1083843,
         "eps": 56.12,
-        "last_updated": "2025-01-11T10:47:55.808714"
+        "last_updated": "2025-01-12T20:04:04.569917"
     },
     {
         "symbol": "SBICARD.NS",
         "price": 722.5499877929688,
         "percent_change": -0.3379327182112069,
         "volume": 1156720.0,
-        "market_cap": 695296131072,
+        "market_cap": 687400091648,
         "pe_ratio": 31.050709,
         "52_week_high": 817.4,
         "52_week_low": 647.95,
@@ -687,6 +687,6 @@
         "beta": 0.379,
         "pb_ratio": 5.2527313,
         "eps": 23.27,
-        "last_updated": "2025-01-11T10:47:56.293768"
+        "last_updated": "2025-01-12T20:04:05.012958"
     }
 ]
