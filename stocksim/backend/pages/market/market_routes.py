@@ -11,17 +11,23 @@ def market_trends():
         return jsonify({"status": "success", "data": trends}), 200
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
+# File: backend/pages/market/market_routes.py
 
 @market_bp.route("/gainers-losers", methods=["GET"])
 def gainers_and_losers():
+    """
+    Fetch top gainers and losers, dynamically filtered by sector.
+    """
+    sector = request.args.get("sector", None)
     try:
-        gainers, losers = get_gainers_and_losers()
+        gainers, losers = get_gainers_and_losers(sector)
         return jsonify({
             "status": "success",
             "data": {"gainers": gainers, "losers": losers}
         }), 200
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
+
 
 @market_bp.route("/screener", methods=["GET"])
 def screener():
@@ -31,5 +37,4 @@ def screener():
         return jsonify({"status": "success", "data": stocks}), 200
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
-
 

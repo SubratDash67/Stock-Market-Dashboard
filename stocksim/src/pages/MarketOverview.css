@@ -1,8 +1,10 @@
 /* File: src/pages/MarketOverview.css */
 
 .market-overview {
-    padding: 20px;
+    padding: 20px 80px; /* Adds 40px padding to the left and right */
+    box-sizing: border-box; /* Ensures padding is included in the element's width */
 }
+
 
 .market-trends .indices {
     display: flex;
@@ -11,13 +13,12 @@
 }
 
 .index-box {
-    background-color: lightgray;
+    background-color: #f9f9f9;
     padding: 15px;
     border-radius: 8px;
     text-align: center;
     flex: 1;
 }
-
 
 .neo-screener {
     margin-top: 60px;
@@ -30,10 +31,11 @@
 }
 
 .neo-screener input {
-    width: 60%; /* Reduced length */
+    max-width:705px; /* Reduced length */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    margin-top: 15px;
 }
 
 .neo-screener-buttons {
@@ -83,6 +85,128 @@
 .losers {
     flex: 1;
     background-color: #f9f9f9;
-    padding: 15px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 100px;
+    padding-right: 100px;
     border-radius: 8px;
+}
+
+/* New styles for the sector buttons */
+.neo-screener-sectors {
+    display: flex;
+    flex-wrap: wrap; /* Ensures buttons wrap if needed */
+    gap: 15px; /* Space between sector buttons */
+    margin-top: 20px;
+}
+/* Active button styling */
+.neo-screener-buttons button.active,
+.neo-screener-sectors button.active {
+    background-color: #28a745; /* Green for active buttons */
+    color: #fff; /* White text */
+    border-color: #28a745;
+}
+
+.neo-screener-sectors button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    max-height: fit-content;
+}
+
+.neo-screener-sectors button:hover {
+    background-color: #0056b3;
+}
+
+/* Added styles for sector sidebar alignment */
+.gainers-losers-layout {
+    display: flex;
+    align-items: flex-start; /* Align sidebar and content at the top */
+}
+
+.sector-sidebar {
+    flex: 1; /* Sidebar takes less space */
+    margin-right: 20px; /* Add space between sidebar and content */
+}
+
+.gainers-losers-content {
+    flex: 3; /* Main content takes more space */
+}
+
+.sector-sidebar h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.sector-buttons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sector-buttons li {
+    margin-bottom: 10px;
+}
+
+.sector-buttons button {
+    width: 100%; /* Buttons fill the width of the sidebar */
+    padding: 10px;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: left; /* Align text to the left */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.sector-buttons li {
+    margin-bottom: 12.5px; /* Adds space between buttons */
+}
+
+.sector-buttons button:hover {
+    background-color: #e0e0e0;
+}
+
+.sector-buttons button.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+.gainers-losers-container ul {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0;            /* Removes default padding */
+    margin: 0;             /* Removes default margin */
+}
+
+
+.gainers ul li,
+.losers ul li {
+    display: flex;
+    justify-content: space-between; /* Aligns symbol and percentage */
+    padding: 3px 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.gainers ul li span,
+.losers ul li span {
+    min-width: 60px; /* Ensures consistent width for percentages */
+    text-align: right; /* Aligns percentage text to the right */
+}
+
+/* Increase the width of the slider */
+.slider-container {
+    width: 100%; /* Set it to take full width of the parent */
+    max-width: 450px; /* Optional: Limit the maximum width */
+    margin: 0 auto; /* Center align the slider */
+}
+
+/* Adjusting rc-slider width directly */
+.rc-slider {
+    width: 100%;
 }
