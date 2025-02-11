@@ -1,9 +1,12 @@
 // File: src/components/Header.js
 import React from "react";
-import { Link } from "react-router-dom"; // Import Link for navigation
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import "./Header.css";
 
 const Header = () => {
+    const { user, logout } = useAuth();
+
     return (
         <header className="header">
             <div className="header-left">
@@ -26,10 +29,16 @@ const Header = () => {
                     placeholder="Search stocks or strategies"
                     className="search-bar"
                 />
-                {/* Link the Login / Sign Up button */}
-                <Link to="/auth" className="login-button">
-                    Login / Sign Up
-                </Link>
+                {user ? (
+                    <div className="user-info">
+                        <span className="welcome-message">Welcome, <span className="username">{user.username}</span>!</span>
+                        <button onClick={logout} className="logout-button">Logout</button>
+                    </div>
+                ) : (
+                    <Link to="/auth" className="login-button">
+                        Login / Sign Up
+                    </Link>
+                )}
             </div>
         </header>
     );

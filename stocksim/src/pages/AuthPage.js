@@ -1,16 +1,20 @@
 // File: src/pages/AuthPage.js
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import "./AuthPage.css";
 
 const AuthPage = () => {
     const [isLogin, setIsLogin] = useState(true);
     const [formData, setFormData] = useState({ username: "", email: "", password: "" });
     const [message, setMessage] = useState("");
+    const { login } = useAuth();
+    const navigate = useNavigate();
 
     const toggleMode = () => {
         setIsLogin(!isLogin);
-        setFormData({ username: "", email: "", password: "" }); // Reset form data
-        setMessage(""); // Clear any previous messages
+        setFormData({ username: "", email: "", password: "" });
+        setMessage("");
     };
 
     const handleChange = (e) => {
@@ -35,8 +39,8 @@ const AuthPage = () => {
             const data = await response.json();
             if (response.ok) {
                 setMessage(isLogin ? "Login successful!" : "Sign-Up successful!");
-                // Clear the form on success
-                setFormData({ username: "", email: "", password: "" });
+                login(data.user);
+                navigate("/");
             } else {
                 setMessage(data.error || "An error occurred. Please try again.");
             }
@@ -97,8 +101,8 @@ const AuthPage = () => {
                 <p className="toggle-link">
                     {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
                     <span onClick={toggleMode}>
-            {isLogin ? "Sign Up" : "Login"}
-          </span>
+                        {isLogin ? "Sign Up" : "Login"}
+                    </span>
                 </p>
             </div>
         </div>
