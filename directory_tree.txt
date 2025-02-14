@@ -1,0 +1,149 @@
+C:\Users\KIIT\Desktop\Stock-Market-Dashboard
+    ├── cleaned_data
+    │   ├── 20MICRONS-bo.csv
+    │   ├── 20MICRONS-ns.csv
+    │   └── ... more CSVs (2063 more)
+    ├── stock-data
+    │   ├── historical_bo_data
+    │   │   ├── 20MICRONS-BO.csv
+    │   │   ├── 21STCENMGM-BO.csv
+    │   │   └── ... more CSVs (963 more)
+    │   └── historical_ns_data
+    │       ├── 20MICRONS-NS.csv
+    │       ├── 21STCENMGM-NS.csv
+    │       └── ... more CSVs (1098 more)
+    ├── stocksim
+    │   ├── .idea
+    │   │   ├── inspectionProfiles
+    │   │   │   └── Project_Default.xml
+    │   │   ├── .gitignore
+    │   │   ├── modules.xml
+    │   │   ├── stocksim.iml
+    │   │   └── vcs.xml
+    │   ├── backend
+    │   │   ├── databases
+    │   │   │   └── auth_db.py
+    │   │   ├── models
+    │   │   │   ├── __init__.py
+    │   │   │   └── auth_models.py
+    │   │   ├── pages
+    │   │   │   ├── auth
+    │   │   │   │   ├── auth_middleware.py
+    │   │   │   │   ├── auth_routes.py
+    │   │   │   │   ├── auth_service.py
+    │   │   │   │   └── jwt_service.py
+    │   │   │   └── market
+    │   │   │       ├── market_routes.py
+    │   │   │       └── market_service.py
+    │   │   ├── stocks-list
+    │   │   │   ├── BO_stocks.txt
+    │   │   │   └── NS_stocks.txt
+    │   │   ├── training
+    │   │   │   ├── large_data_20250214_001456.joblib
+    │   │   │   ├── large_data_20250214_100812.joblib
+    │   │   │   ├── lstm_stock_model.h5
+    │   │   │   ├── optimized_lstm_model.h5
+    │   │   │   ├── optimized_training_history.pkl
+    │   │   │   ├── saved_session.pkl
+    │   │   │   ├── saved_session_20250214_001456.pkl
+    │   │   │   ├── saved_session_20250214_100812.pkl
+    │   │   │   ├── stock_lstm_checkpoint_20250214_001456.keras
+    │   │   │   ├── stock_lstm_checkpoint_20250214_100812.keras
+    │   │   │   ├── training_history_plot_20250214_100812.png
+    │   │   │   ├── X_stock_sequences.npy
+    │   │   │   ├── y_stock_targets.npy
+    │   │   │   ├── training_history_20250214_001456.csv
+    │   │   │   └── training_history_20250214_100812.csv
+    │   │   ├── tuning_results
+    │   │   │   └── lstm_tuning
+    │   │   │       ├── trial_0000
+    │   │   │       │   ├── build_config.json
+    │   │   │       │   ├── checkpoint.weights.h5
+    │   │   │       │   └── trial.json
+    │   │   │       ├── trial_0001
+    │   │   │       │   ├── build_config.json
+    │   │   │       │   ├── checkpoint.weights.h5
+    │   │   │       │   └── trial.json
+    │   │   │       ├── trial_0002
+    │   │   │       │   ├── build_config.json
+    │   │   │       │   ├── checkpoint.weights.h5
+    │   │   │       │   └── trial.json
+    │   │   │       ├── trial_0003
+    │   │   │       │   ├── build_config.json
+    │   │   │       │   ├── checkpoint.weights.h5
+    │   │   │       │   └── trial.json
+    │   │   │       ├── trial_0004
+    │   │   │       │   ├── build_config.json
+    │   │   │       │   ├── checkpoint.weights.h5
+    │   │   │       │   └── trial.json
+    │   │   │       ├── trial_0005
+    │   │   │       │   └── trial.json
+    │   │   │       ├── oracle.json
+    │   │   │       └── tuner0.json
+    │   │   ├── app.py
+    │   │   ├── auth.db
+    │   │   ├── config.py
+    │   │   ├── extract.py
+    │   │   ├── model.ipynb
+    │   │   ├── stock_data.json
+    │   │   └── stock_data.csv
+    │   ├── public
+    │   │   ├── favicon.ico
+    │   │   ├── index.html
+    │   │   ├── logo192.png
+    │   │   ├── logo512.png
+    │   │   ├── manifest.json
+    │   │   └── robots.txt
+    │   ├── src
+    │   │   ├── components
+    │   │   │   ├── Footer.css
+    │   │   │   ├── Footer.js
+    │   │   │   ├── Header.css
+    │   │   │   └── Header.js
+    │   │   ├── context
+    │   │   │   └── AuthContext.js
+    │   │   ├── pages
+    │   │   │   ├── AboutUsPage.css
+    │   │   │   ├── AboutUsPage.js
+    │   │   │   ├── AnalyticsStrategiesPage.css
+    │   │   │   ├── AnalyticsStrategiesPage.js
+    │   │   │   ├── AuthPage.css
+    │   │   │   ├── AuthPage.js
+    │   │   │   ├── Homepage.css
+    │   │   │   ├── Homepage.js
+    │   │   │   ├── MarketOverview.css
+    │   │   │   ├── MarketOverview.js
+    │   │   │   ├── NotFound.css
+    │   │   │   ├── NotFound.js
+    │   │   │   ├── PortfolioPage.css
+    │   │   │   ├── PortfolioPage.js
+    │   │   │   ├── TradePage.css
+    │   │   │   └── TradePage.js
+    │   │   ├── App.css
+    │   │   ├── App.js
+    │   │   ├── App.test.js
+    │   │   ├── index.css
+    │   │   ├── index.js
+    │   │   ├── logo.svg
+    │   │   ├── reportWebVitals.js
+    │   │   └── setupTests.js
+    │   ├── .gitignore
+    │   ├── package-lock.json
+    │   ├── package.json
+    │   └── README.md
+    ├── xg
+    │   ├── ACC_scaler.pkl
+    │   ├── ACC_xgb_model.pkl
+    │   ├── ensemble_model.joblib
+    │   ├── history.py
+    │   ├── xgboost_data_splits.joblib
+    │   ├── xgboost_model.joblib
+    │   └── xgboost_predictions.joblib
+    ├── .gitignore
+    ├── directory_tree.txt
+    ├── ensemble_model_improved.joblib
+    ├── historical_analysis.ipynb
+    ├── light-model.ipynb
+    ├── README.md
+    ├── sync.bat
+    └── tree.py

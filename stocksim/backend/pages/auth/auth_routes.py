@@ -1,31 +1,15 @@
 # File: backend/pages/auth/auth_routes.py
 from flask import Blueprint, request, jsonify
-from functools import wraps
 from sqlalchemy.orm import Session
 from databases.auth_db import get_auth_db
 from .auth_service import register_user, authenticate_user
 from .jwt_service import JWTService
 from models.auth_models import User
+from .auth_middleware import (
+    require_auth,
+)  # Import the decorator instead of defining it here
 
 auth_bp = Blueprint("auth", __name__)
-
-
-def require_auth(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        auth_header = request.headers.get("Authorization")
-        if not auth_header or not auth_header.startswith("Bearer "):
-            return jsonify({"error": "Authorization token is missing or invalid"}), 401
-
-        token = auth_header.split(" ")[1]  # Extract token from 'Bearer <token>'
-        try:
-            with next(get_auth_db()) as db:
-                current_user = JWTService.get_current_user(db, token)
-                return f(current_user, *args, **kwargs)
-        except Exception as e:
-            return jsonify({"error": str(e)}), 401
-
-    return decorated_function
 
 
 @auth_bp.route("/signup", methods=["POST"])
