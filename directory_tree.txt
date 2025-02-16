@@ -25,8 +25,14 @@ C:\Users\KIIT\Desktop\Stock-Market-Dashboard
     │   │   │   └── auth_db.py
     │   │   ├── models
     │   │   │   ├── __init__.py
-    │   │   │   └── auth_models.py
+    │   │   │   ├── auth_models.py
+    │   │   │   ├── optimized_lstm_model.h5
+    │   │   │   └── scaler.pkl
     │   │   ├── pages
+    │   │   │   ├── analytics
+    │   │   │   │   ├── analytics_routes.py
+    │   │   │   │   ├── analytics_service.py
+    │   │   │   │   └── stock_data_service.py
     │   │   │   ├── auth
     │   │   │   │   ├── auth_middleware.py
     │   │   │   │   ├── auth_routes.py
@@ -42,7 +48,6 @@ C:\Users\KIIT\Desktop\Stock-Market-Dashboard
     │   │   │   ├── large_data_20250214_001456.joblib
     │   │   │   ├── large_data_20250214_100812.joblib
     │   │   │   ├── lstm_stock_model.h5
-    │   │   │   ├── optimized_lstm_model.h5
     │   │   │   ├── optimized_training_history.pkl
     │   │   │   ├── saved_session.pkl
     │   │   │   ├── saved_session_20250214_001456.pkl
@@ -85,6 +90,8 @@ C:\Users\KIIT\Desktop\Stock-Market-Dashboard
     │   │   ├── config.py
     │   │   ├── extract.py
     │   │   ├── model.ipynb
+    │   │   ├── output.pdf
+    │   │   ├── output.png
     │   │   ├── stock_data.json
     │   │   └── stock_data.csv
     │   ├── public
@@ -135,13 +142,13 @@ C:\Users\KIIT\Desktop\Stock-Market-Dashboard
     │   ├── ACC_scaler.pkl
     │   ├── ACC_xgb_model.pkl
     │   ├── ensemble_model.joblib
+    │   ├── ensemble_model_improved.joblib
     │   ├── history.py
     │   ├── xgboost_data_splits.joblib
     │   ├── xgboost_model.joblib
     │   └── xgboost_predictions.joblib
     ├── .gitignore
     ├── directory_tree.txt
-    ├── ensemble_model_improved.joblib
     ├── historical_analysis.ipynb
     ├── light-model.ipynb
     ├── README.md
