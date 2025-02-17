@@ -1,118 +1,130 @@
-import os
-import numpy as np
-import tensorflow as tf
-import joblib
+# analytics_service.py
 
-from ta.trend import SMAIndicator, EMAIndicator, MACD
-from ta.momentum import RSIIndicator
-from ta.volatility import BollingerBands
-from ta.volume import VolumeWeightedAveragePrice
+import yfinance as yf
 import pandas as pd
-import matplotlib.pyplot as plt
-from io import BytesIO
-import base64
-
-import requests
-import os
-
-API_KEY = os.getenv("ALPHA_VANTAGE_API_KEY")
+import numpy as np
+from sklearn.linear_model import LinearRegression
 
 
-def fetch_sma(symbol, interval="daily", time_period=20):
-    url = f"https://www.alphavantage.co/query?function=SMA&symbol={symbol}&interval={interval}&time_period={time_period}&series_type=close&apikey={API_KEY}"
-    response = requests.get(url)
-    data = response.json()
-
-    if "Technical Analysis: SMA" not in data:
-        raise ValueError("Invalid API response for SMA")
-
-    return float(list(data["Technical Analysis: SMA"].values())[0]["SMA"])
+def fetch_stock_data(symbol, period="1mo", interval="1d"):
+    """Fetch historical stock data using yfinance."""
+    ticker = yf.Ticker(symbol)
+    df = ticker.history(period=period, interval=interval)
+    if df.empty:
+        raise ValueError(f"No data available for {symbol}")
+    return df[["Open", "High", "Low", "Close", "Volume"]]
 
 
-def fetch_ema(symbol, interval="daily", time_period=10):
-    url = f"https://www.alphavantage.co/query?function=EMA&symbol={symbol}&interval={interval}&time_period={time_period}&series_type=close&apikey={API_KEY}"
-    response = requests.get(url)
-    data = response.json()
-
-    if "Technical Analysis: EMA" not in data:
-        raise ValueError("Invalid API response for EMA")
-
-    return float(list(data["Technical Analysis: EMA"].values())[0]["EMA"])
+def get_latest_price(symbol):
+    """Get the latest stock price."""
+    ticker = yf.Ticker(symbol)
+    return round(ticker.info.get("regularMarketPrice", 0), 2)
 
 
-def fetch_rsi(symbol, interval="daily", time_period=14):
-    url = f"https://www.alphavantage.co/query?function=RSI&symbol={symbol}&interval={interval}&time_period={time_period}&series_type=close&apikey={API_KEY}"
-    response = requests.get(url)
-    data = response.json()
+def predict_stock_price(symbol, prediction_type="daily"):
+    """Predict stock closing price for today, this week, or this month."""
+    df = fetch_stock_data(symbol, period="3mo", interval="1d")
 
-    if "Technical Analysis: RSI" not in data:
-        raise ValueError("Invalid API response for RSI")
+    X = np.arange(len(df)).reshape(-1, 1)
+    y = df["Close"].values
 
-    return float(list(data["Technical Analysis: RSI"].values())[0]["RSI"])
+    model = LinearRegression()
+    model.fit(X, y)
+
+    if prediction_type == "daily":
+        next_day = len(df)
+        return round(model.predict([[next_day]])[0], 2)
+    elif prediction_type == "weekly":
+        next_week = len(df) + 7
+        return round(model.predict([[next_week]])[0], 2)
+    elif prediction_type == "monthly":
+        next_month = len(df) + 30
+        return round(model.predict([[next_month]])[0], 2)
+
+    return 0.0
 
 
-def predict_closing_price(symbol, prediction_type="intraday"):
-    interval_mapping = {"intraday": "daily", "weekly": "weekly", "monthly": "monthly"}
-
-    interval = interval_mapping.get(prediction_type, "daily")
-
-    sma = fetch_sma(symbol, interval=interval)
-    ema = fetch_ema(symbol, interval=interval)
-
-    predicted_price = (sma + ema) / 2  # Simple average of SMA & EMA
-    return predicted_price
-
-
-def generate_historical_charts(stock_name):
-    base_dir = r"C:\Users\KIIT\Desktop\Stock-Market-Dashboard\cleaned_data"
-    bo_path = os.path.join(base_dir, f"{stock_name}-bo.csv")
-    ns_path = os.path.join(base_dir, f"{stock_name}-ns.csv")
-
-    try:
-        df_bo = pd.read_csv(bo_path, parse_dates=["Date"])
-        df_ns = pd.read_csv(ns_path, parse_dates=["Date"])
-    except FileNotFoundError:
-        raise FileNotFoundError(f"Data for {stock_name} not found.")
-
-    df = pd.concat([df_bo, df_ns]).sort_values(by="Date").reset_index(drop=True)
-    df["SMA_20"] = df["Close"].rolling(window=20).mean()
-
-    delta = df["Close"].diff(1)
+def compute_rsi(data, period=14):
+    """Calculate the Relative Strength Index (RSI)."""
+    delta = data.diff()
     gain = delta.where(delta > 0, 0)
     loss = -delta.where(delta < 0, 0)
-    avg_gain = gain.rolling(window=14).mean()
-    avg_loss = loss.rolling(window=14).mean()
-    rs = avg_gain / avg_loss
-    df["RSI"] = 100 - (100 / (1 + rs))
-
-    exp1 = df["Close"].ewm(span=12, adjust=False).mean()
-    exp2 = df["Close"].ewm(span=26, adjust=False).mean()
-    df["MACD"] = exp1 - exp2
-    df["MACD_Signal"] = df["MACD"].ewm(span=9, adjust=False).mean()
-
-    df["Cumulative_Volume"] = df["Volume"].cumsum()
-    df["Cumulative_Price_Volume"] = (df["Close"] * df["Volume"]).cumsum()
-    df["VWAP"] = df["Cumulative_Price_Volume"] / df["Cumulative_Volume"]
-
-    charts = {}
-
-    for metric, title in zip(
-        ["Close", "RSI", "MACD", "VWAP"], ["Close Price & SMA", "RSI", "MACD", "VWAP"]
-    ):
-        plt.figure(figsize=(14, 4))
-        plt.plot(df["Date"], df[metric], label=metric, alpha=0.7)
-        plt.title(f"{stock_name} - {title}")
-        plt.xlabel("Date")
-        plt.ylabel(metric)
-        plt.legend()
-        plt.grid(True)
-        buf = BytesIO()
-        plt.savefig(buf, format="png")
-        buf.seek(0)
-        charts[metric.lower()] = base64.b64encode(buf.getvalue()).decode("utf-8")
-        plt.close()
-
-    return charts
+    avg_gain = gain.rolling(window=period).mean()
+    avg_loss = loss.rolling(window=period).mean()
+    rs = avg_gain / avg_loss.replace(0, pd.NA)
+    return 100 - (100 / (1 + rs))
 
 
-# path: stocksim/backend/pages/analytics/analytics_service.py
+def compute_macd(data, fast_period=12, slow_period=26, signal_period=9):
+    """Calculate MACD and Signal line."""
+    fast_ema = data.ewm(span=fast_period, adjust=False).mean()
+    slow_ema = data.ewm(span=slow_period, adjust=False).mean()
+    macd = fast_ema - slow_ema
+    signal = macd.ewm(span=signal_period, adjust=False).mean()
+    return macd, signal
+
+
+def generate_trading_signals(symbol):
+    """Generate buy/sell signals using RSI, MACD, and Moving Averages."""
+    df = fetch_stock_data(symbol, period="1mo", interval="1d")
+    df["SMA_20"] = df["Close"].rolling(window=20).mean()
+    df["RSI"] = compute_rsi(df["Close"])
+    macd, macd_signal = compute_macd(df["Close"])
+    df["MACD"], df["MACD_Signal"] = macd, macd_signal
+
+    signals = []
+    if df["Close"].iloc[-1] > df["SMA_20"].iloc[-1]:
+        signals.append("Bullish: Price above 20-day SMA")
+    if df["RSI"].iloc[-1] < 30:
+        signals.append("Oversold: Possible buy opportunity")
+    elif df["RSI"].iloc[-1] > 70:
+        signals.append("Overbought: Possible sell opportunity")
+    if macd.iloc[-1] > macd_signal.iloc[-1]:
+        signals.append("Bullish: MACD above Signal line")
+    else:
+        signals.append("Bearish: MACD below Signal line")
+    return signals
+
+
+def get_stock_fundamentals(symbol):
+    """Fetch stock fundamentals: market cap, P/E ratio, etc."""
+    ticker = yf.Ticker(symbol)
+    info = ticker.info
+    return {
+        "sector": info.get("sector", "N/A"),
+        "market_cap": info.get("marketCap", "N/A"),
+        "pe_ratio": info.get("trailingPE", "N/A"),
+        "dividend_yield": info.get("dividendYield", "N/A"),
+        "52_week_high": info.get("fiftyTwoWeekHigh", "N/A"),
+        "52_week_low": info.get("fiftyTwoWeekLow", "N/A"),
+    }
+
+
+def get_similar_stocks(symbol):
+    """Find similar stocks based on sector and market cap."""
+    ticker = yf.Ticker(symbol)
+    sector = ticker.info.get("sector", "N/A")
+    if sector == "N/A":
+        return []
+    # This is a placeholder. In a real application, you'd need a comprehensive list of stocks.
+    sp500 = yf.Ticker("^GSPC").info.get("components", [])[
+        :100
+    ]  # Get top 100 S&P 500 components
+    similar = [s for s in sp500 if yf.Ticker(s).info.get("sector") == sector]
+    return similar[:5]  # Return top 5 similar stocks
+
+
+def compare_stocks(stock1, stock2):
+    """Compare two stocks based on fundamentals and performance."""
+    stock1_data = get_stock_fundamentals(stock1)
+    stock2_data = get_stock_fundamentals(stock2)
+    return {
+        stock1: stock1_data,
+        stock2: stock2_data,
+    }
+
+
+def get_options_data(symbol):
+    """Fetch available expiration dates for options trading."""
+    ticker = yf.Ticker(symbol)
+    return ticker.options  # List of expiration dates

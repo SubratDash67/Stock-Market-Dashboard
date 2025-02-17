@@ -3,15 +3,6 @@ C:\Users\KIIT\Desktop\Stock-Market-Dashboard
     │   ├── 20MICRONS-bo.csv
     │   ├── 20MICRONS-ns.csv
     │   └── ... more CSVs (2063 more)
-    ├── stock-data
-    │   ├── historical_bo_data
-    │   │   ├── 20MICRONS-BO.csv
-    │   │   ├── 21STCENMGM-BO.csv
-    │   │   └── ... more CSVs (963 more)
-    │   └── historical_ns_data
-    │       ├── 20MICRONS-NS.csv
-    │       ├── 21STCENMGM-NS.csv
-    │       └── ... more CSVs (1098 more)
     ├── stocksim
     │   ├── .idea
     │   │   ├── inspectionProfiles
@@ -135,22 +126,14 @@ C:\Users\KIIT\Desktop\Stock-Market-Dashboard
     │   │   ├── reportWebVitals.js
     │   │   └── setupTests.js
     │   ├── .gitignore
+    │   ├── components.json
     │   ├── package-lock.json
     │   ├── package.json
-    │   └── README.md
-    ├── xg
-    │   ├── ACC_scaler.pkl
-    │   ├── ACC_xgb_model.pkl
-    │   ├── ensemble_model.joblib
-    │   ├── ensemble_model_improved.joblib
-    │   ├── history.py
-    │   ├── xgboost_data_splits.joblib
-    │   ├── xgboost_model.joblib
-    │   └── xgboost_predictions.joblib
+    │   ├── README.md
+    │   └── tailwind.config.js
+    ├── .env
     ├── .gitignore
     ├── directory_tree.txt
-    ├── historical_analysis.ipynb
-    ├── light-model.ipynb
     ├── README.md
     ├── sync.bat
     └── tree.py

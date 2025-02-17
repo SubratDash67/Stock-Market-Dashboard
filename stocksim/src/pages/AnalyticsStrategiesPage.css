@@ -1,89 +1,103 @@
+/* AnalyticsStrategiesPage.css */
 .analytics-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 40px auto;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  h1 {
+    color: #333;
     text-align: center;
-    padding: 20px;
-    background: #1e1e2f;
-    color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.input-section {
+    margin-bottom: 30px;
+    font-size: 32px;
+  }
+  
+  .input-section {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
-    margin-bottom: 20px;
-}
-
-.input-box, .dropdown {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
+    margin-bottom: 30px;
+  }
+  
+  .input-box, .dropdown {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     font-size: 16px;
-    width: 250px;
-    text-align: center;
-}
-
-.fetch-btn {
-    padding: 10px 15px;
-    border: none;
-    background: #4CAF50;
+  }
+  
+  .input-box {
+    width: 200px;
+  }
+  
+  .dropdown {
+    width: 180px;
+  }
+  
+  .analyze-btn {
+    padding: 12px 25px;
+    background: #007bff;
     color: white;
+    border: none;
+    border-radius: 8px;
     font-size: 16px;
-    border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s;
-}
-
-.fetch-btn:hover {
-    background: #45a049;
-}
-
-.error {
-    color: red;
+    transition: background 0.3s ease;
+  }
+  
+  .analyze-btn:hover {
+    background: #0056b3;
+  }
+  
+  .error {
+    color: #dc3545;
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .result-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .result-card h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 24px;
+  }
+  
+  .result-card ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .result-card li {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  .highlight {
+    font-size: 28px;
+    color: #28a745;
     font-weight: bold;
-}
-
-.prediction-box {
-    background: #2a2a3a;
-    padding: 15px;
-    margin-top: 20px;
-    border-radius: 5px;
-    font-size: 20px;
-}
-
-.prediction-box span {
-    font-weight: bold;
-    color: #4CAF50;
-}
-
-.charts-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.chart-card {
-    background: #2a2a3a;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-}
-
-.chart-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-/*path: stocksim/src/pages/AnalyticsStrategiesPage.js*/
+  }
+  
+  @media (max-width: 768px) {
+    .input-section {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .input-box, .dropdown, .analyze-btn {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+  
