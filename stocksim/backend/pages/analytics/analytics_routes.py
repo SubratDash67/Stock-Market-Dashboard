@@ -10,8 +10,24 @@ from .analytics_service import (
     get_options_data,
 )
 import logging
+import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+ALPHAVANTAGE_API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
 
 analytics_bp = Blueprint("analytics", __name__)
+
+
+def search_similar_stocks(symbol):
+    url = f"https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={symbol}&apikey={ALPHAVANTAGE_API_KEY}"
+    response = requests.get(url)
+    data = response.json()
+    if "bestMatches" in data:
+        return data["bestMatches"]
+    else:
+        return []
 
 
 @analytics_bp.errorhandler(Exception)

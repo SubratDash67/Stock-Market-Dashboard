@@ -4,6 +4,12 @@ import yfinance as yf
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LinearRegression
+import os
+import requests
+from dotenv import load_dotenv
+
+load_dotenv()
+ALPHAVANTAGE_API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
 
 
 def fetch_stock_data(symbol, period="1mo", interval="1d"):
@@ -24,10 +30,8 @@ def get_latest_price(symbol):
 def predict_stock_price(symbol, prediction_type="daily"):
     """Predict stock closing price for today, this week, or this month."""
     df = fetch_stock_data(symbol, period="3mo", interval="1d")
-
     X = np.arange(len(df)).reshape(-1, 1)
     y = df["Close"].values
-
     model = LinearRegression()
     model.fit(X, y)
 
@@ -40,7 +44,6 @@ def predict_stock_price(symbol, prediction_type="daily"):
     elif prediction_type == "monthly":
         next_month = len(df) + 30
         return round(model.predict([[next_month]])[0], 2)
-
     return 0.0
 
 
@@ -101,17 +104,88 @@ def get_stock_fundamentals(symbol):
 
 
 def get_similar_stocks(symbol):
-    """Find similar stocks based on sector and market cap."""
-    ticker = yf.Ticker(symbol)
-    sector = ticker.info.get("sector", "N/A")
-    if sector == "N/A":
+    """Find similar stocks based on sector, industry, and financial metrics."""
+    # Get company overview
+    overview_url = f"https://www.alphavantage.co/query?function=OVERVIEW&symbol={symbol}&apikey={ALPHAVANTAGE_API_KEY}"
+    overview_response = requests.get(overview_url)
+    overview_data = overview_response.json()
+
+    if not overview_data:
         return []
-    # This is a placeholder. In a real application, you'd need a comprehensive list of stocks.
-    sp500 = yf.Ticker("^GSPC").info.get("components", [])[
-        :100
-    ]  # Get top 100 S&P 500 components
-    similar = [s for s in sp500 if yf.Ticker(s).info.get("sector") == sector]
-    return similar[:5]  # Return top 5 similar stocks
+
+    target_sector = overview_data.get("Sector")
+    target_industry = overview_data.get("Industry")
+    target_market_cap = float(overview_data.get("MarketCapitalization", 0))
+
+    # Get earnings data
+    earnings_url = f"https://www.alphavantage.co/query?function=EARNINGS&symbol={symbol}&apikey={ALPHAVANTAGE_API_KEY}"
+    earnings_response = requests.get(earnings_url)
+    earnings_data = earnings_response.json()
+
+    if not earnings_data or "annualEarnings" not in earnings_data:
+        return []
+
+    target_eps = float(earnings_data["annualEarnings"][0].get("reportedEPS", 0))
+
+    # For simplicity, we'll use a predefined list of stocks to compare
+    # In a real-world scenario, you'd need a more comprehensive list or database
+    stock_list = [
+        "AAPL",
+        "MSFT",
+        "GOOGL",
+        "AMZN",
+        "FB",
+        "TSLA",
+        "NVDA",
+        "JPM",
+        "JNJ",
+        "V",
+    ]
+
+    similar_stocks = []
+
+    for stock in stock_list:
+        if stock == symbol:
+            continue
+
+        # Get overview for comparison stock
+        comp_overview_url = f"https://www.alphavantage.co/query?function=OVERVIEW&symbol={stock}&apikey={ALPHAVANTAGE_API_KEY}"
+        comp_overview_response = requests.get(comp_overview_url)
+        comp_overview_data = comp_overview_response.json()
+
+        if not comp_overview_data:
+            continue
+
+        if (
+            comp_overview_data.get("Sector") == target_sector
+            and comp_overview_data.get("Industry") == target_industry
+        ):
+            comp_market_cap = float(comp_overview_data.get("MarketCapitalization", 0))
+
+            # Get earnings for comparison stock
+            comp_earnings_url = f"https://www.alphavantage.co/query?function=EARNINGS&symbol={stock}&apikey={ALPHAVANTAGE_API_KEY}"
+            comp_earnings_response = requests.get(comp_earnings_url)
+            comp_earnings_data = comp_earnings_response.json()
+
+            if not comp_earnings_data or "annualEarnings" not in comp_earnings_data:
+                continue
+
+            comp_eps = float(
+                comp_earnings_data["annualEarnings"][0].get("reportedEPS", 0)
+            )
+
+            # Calculate similarity score (lower is more similar)
+            market_cap_diff = abs(target_market_cap - comp_market_cap) / max(
+                target_market_cap, comp_market_cap
+            )
+            eps_diff = abs(target_eps - comp_eps) / max(target_eps, comp_eps)
+            similarity_score = market_cap_diff + eps_diff
+
+            similar_stocks.append((stock, similarity_score))
+
+    # Sort by similarity score and return top 5
+    similar_stocks.sort(key=lambda x: x[1])
+    return [stock[0] for stock in similar_stocks[:5]]
 
 
 def compare_stocks(stock1, stock2):
@@ -128,3 +202,10 @@ def get_options_data(symbol):
     """Fetch available expiration dates for options trading."""
     ticker = yf.Ticker(symbol)
     return ticker.options  # List of expiration dates
+
+
+def get_stock_sector(symbol):
+    url = f"https://www.alphavantage.co/query?function=OVERVIEW&symbol={symbol}&apikey={ALPHAVANTAGE_API_KEY}"
+    response = requests.get(url)
+    data = response.json()
+    return data.get("Sector", "")
