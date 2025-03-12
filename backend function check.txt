@@ -1,0 +1,141 @@
+Here are curl commands to test all 6 backend features we've implemented:
+
+### 1. Historical Stock Data Analysis
+
+**Get list of available stocks:**
+```bash
+curl http://localhost:5000/api/stocks
+```
+
+**Get OHLC data:**
+```bash
+curl "http://localhost:5000/api/stocks/JAICORPLTD/bo/ohlc?start_date=1998-01-01&end_date=2000-01-01"
+```
+
+**Get volume data:**
+```bash
+curl "http://localhost:5000/api/stocks/JAICORPLTD/bo/volume?start_date=1998-01-01&end_date=2000-01-01"
+```
+
+**Get moving average data:**
+```bash
+curl "http://localhost:5000/api/stocks/JAICORPLTD/bo/ma?window=20&type=simple&start_date=1998-01-01&end_date=2000-01-01"
+```
+
+### 2. Technical Indicators
+
+**Get RSI data:**
+```bash
+curl "http://localhost:5000/api/stocks/JAICORPLTD/bo/rsi?period=14&start_date=1998-01-01&end_date=2000-01-01"
+```
+
+**Get MACD data:**
+```bash
+curl "http://localhost:5000/api/stocks/JAICORPLTD/bo/macd?fast_period=12&slow_period=26&signal_period=9&start_date=1998-01-01&end_date=2000-01-01"
+```
+
+**Get Bollinger Bands data:**
+```bash
+curl "http://localhost:5000/api/stocks/JAICORPLTD/bo/bollinger?period=20&std_dev=2&start_date=1998-01-01&end_date=2000-01-01"
+```
+
+### 3. Stock Comparisons
+
+**Get list of sectors:**
+```bash
+curl http://localhost:5000/api/sectors
+```
+
+**Get stocks in a sector:**
+```bash
+curl http://localhost:5000/api/sectors/Technology/stocks
+```
+
+**Compare multiple stocks:**
+```bash
+curl -X POST http://localhost:5000/api/comparison/stocks \
+  -H "Content-Type: application/json" \
+  -d '{
+    "stocks": ["JAICORPLTD", "INFY"],
+    "exchanges": ["bo", "ns"],
+    "start_date": "1998-01-01",
+    "end_date": "2000-01-01"
+  }'
+```
+
+**Compare sector performance:**
+```bash
+curl "http://localhost:5000/api/comparison/sectors/Technology?start_date=1998-01-01&end_date=2000-01-01"
+```
+
+### 4. Basic Trading Strategies
+
+**Get trend following signals:**
+```bash
+curl "http://localhost:5000/api/strategies/trend-following/JAICORPLTD/bo?fast_period=20&slow_period=50&start_date=1998-01-01&end_date=2000-01-01"
+```
+
+**Get support and resistance levels:**
+```bash
+curl "http://localhost:5000/api/strategies/support-resistance/JAICORPLTD/bo?period=20&threshold=0.03&start_date=1998-01-01&end_date=2000-01-01"
+```
+
+**Get momentum signals:**
+```bash
+curl "http://localhost:5000/api/strategies/momentum/JAICORPLTD/bo?rsi_period=14&rsi_overbought=70&rsi_oversold=30&start_date=1998-01-01&end_date=2000-01-01"
+```
+
+### 5. Options Trading Strategies
+
+**Calculate covered call strategy:**
+```bash
+curl -X POST http://localhost:5000/api/options/covered-call \
+  -H "Content-Type: application/json" \
+  -d '{
+    "stock_price": 100,
+    "strike_price": 110,
+    "premium": 5,
+    "quantity": 1
+  }'
+```
+
+**Calculate straddle strategy:**
+```bash
+curl -X POST http://localhost:5000/api/options/straddle \
+  -H "Content-Type: application/json" \
+  -d '{
+    "stock_price": 100,
+    "strike_price": 100,
+    "call_premium": 5,
+    "put_premium": 5,
+    "quantity": 1,
+    "position_type": "long"
+  }'
+```
+
+**Calculate iron condor strategy:**
+```bash
+curl -X POST http://localhost:5000/api/options/iron-condor \
+  -H "Content-Type: application/json" \
+  -d '{
+    "stock_price": 100,
+    "call_short_strike": 110,
+    "call_long_strike": 120,
+    "put_short_strike": 90,
+    "put_long_strike": 80,
+    "net_credit": 5,
+    "quantity": 1
+  }'
+```
+
+### 6. Economic & Market Indicators
+
+**Get market indices data:**
+```bash
+curl "http://localhost:5000/api/market/indices?start_date=2020-01-01&end_date=2021-01-01"
+```
+
+**Get FII/DII activity data:**
+```bash
+curl "http://localhost:5000/api/market/fii-dii?start_date=2020-01-01&end_date=2021-01-01"
+```
