@@ -2,7 +2,7 @@
 from datetime import datetime, timedelta
 import jwt
 from config import Config
-from models.auth_models import User
+from models.models import User
 from sqlalchemy.orm import Session
 
 

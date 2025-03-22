@@ -6,13 +6,13 @@
 }
 
 
-.market-trends .indices {
+.market-overview .market-trends .indices {
     display: flex;
     gap: 20px;
     margin: 20px 0;
 }
 
-.index-box {
+.market-overview .index-box {
     background-color: #f9f9f9;
     padding: 15px;
     border-radius: 8px;
@@ -20,30 +20,30 @@
     flex: 1;
 }
 
-.neo-screener {
+.market-overview .neo-screener {
     margin-top: 60px;
 }
 
-.neo-screener-input {
+.market-overview .neo-screener-input {
     display: flex;
     align-items: center;
     gap: 10px; /* Space between input and buttons */
 }
 
-.neo-screener input {
-    max-width:705px; /* Reduced length */
+.market-overview .neo-screener input {
+    width:650px; /* Reduced length */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-top: 15px;
 }
 
-.neo-screener-buttons {
+.market-overview .neo-screener-buttons {
     display: flex;
     gap: 10px; /* Space between buttons */
 }
 
-.neo-screener-buttons button {
+.market-overview .neo-screener-buttons button {
     padding: 10px 15px;
     background-color: #007bff;
     color: #fff;
@@ -53,36 +53,36 @@
     transition: background-color 0.3s ease;
 }
 
-.neo-screener-buttons button:hover {
+.market-overview .neo-screener-buttons button:hover {
     background-color: #0056b3;
 }
 
-.neo-screener table {
+.market-overview .neo-screener table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.neo-screener th,
-.neo-screener td {
+.market-overview .neo-screener th,
+.market-overview .neo-screener td {
     border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
 }
 
-.sector-screener select {
+.market-overview .sector-screener select {
     padding: 10px;
     border-radius: 4px;
     margin-top: 15px;
 }
 
-.gainers-losers-container {
+.market-overview .gainers-losers-container {
     display: flex;
     gap: 20px;
     margin-top: 20px;
 }
 
-.gainers,
-.losers {
+.market-overview .gainers,
+.market-overview .losers {
     flex: 1;
     background-color: #f9f9f9;
     padding-top: 10px;
@@ -93,21 +93,21 @@
 }
 
 /* New styles for the sector buttons */
-.neo-screener-sectors {
+.market-overview .neo-screener-sectors {
     display: flex;
     flex-wrap: wrap; /* Ensures buttons wrap if needed */
     gap: 15px; /* Space between sector buttons */
     margin-top: 20px;
 }
 /* Active button styling */
-.neo-screener-buttons button.active,
-.neo-screener-sectors button.active {
+.market-overview .neo-screener-buttons button.active,
+.market-overview .neo-screener-sectors button.active {
     background-color: #28a745; /* Green for active buttons */
     color: #fff; /* White text */
     border-color: #28a745;
 }
 
-.neo-screener-sectors button {
+.market-overview .neo-screener-sectors button {
     padding: 10px 15px;
     background-color: #007bff;
     color: #fff;
@@ -120,42 +120,42 @@
     max-height: fit-content;
 }
 
-.neo-screener-sectors button:hover {
+.market-overview .neo-screener-sectors button:hover {
     background-color: #0056b3;
 }
 
 /* Added styles for sector sidebar alignment */
-.gainers-losers-layout {
+.market-overview .gainers-losers-layout {
     display: flex;
     align-items: flex-start; /* Align sidebar and content at the top */
 }
 
-.sector-sidebar {
+.market-overview .sector-sidebar {
     flex: 1; /* Sidebar takes less space */
     margin-right: 20px; /* Add space between sidebar and content */
 }
 
-.gainers-losers-content {
+.market-overview .gainers-losers-content {
     flex: 3; /* Main content takes more space */
 }
 
-.sector-sidebar h3 {
+.market-overview .sector-sidebar h3 {
     font-size: 1.5rem;
     margin-bottom: 20px;
     margin-top: 20px;
 }
 
-.sector-buttons {
+.market-overview .sector-buttons {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.sector-buttons li {
+.market-overview .sector-buttons li {
     margin-bottom: 10px;
 }
 
-.sector-buttons button {
+.market-overview .sector-buttons button {
     width: 100%; /* Buttons fill the width of the sidebar */
     padding: 10px;
     background: #f0f0f0;
@@ -165,48 +165,48 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-.sector-buttons li {
+.market-overview .sector-buttons li {
     margin-bottom: 12.5px; /* Adds space between buttons */
 }
 
-.sector-buttons button:hover {
+.market-overview .sector-buttons button:hover {
     background-color: #e0e0e0;
 }
 
-.sector-buttons button.active {
+.market-overview .sector-buttons button.active {
     background-color: #007bff;
     color: #fff;
     border-color: #007bff;
 }
-.gainers-losers-container ul {
+.market-overview .gainers-losers-container ul {
     list-style-type: none; /* Removes bullet points */
     padding: 0;            /* Removes default padding */
     margin: 0;             /* Removes default margin */
 }
 
 
-.gainers ul li,
-.losers ul li {
+.market-overview .gainers ul li,
+.market-overview .losers ul li {
     display: flex;
     justify-content: space-between; /* Aligns symbol and percentage */
     padding: 3px 0;
     font-family: 'Arial', sans-serif;
 }
 
-.gainers ul li span,
-.losers ul li span {
+.market-overview .gainers ul li span,
+.market-overview .losers ul li span {
     min-width: 60px; /* Ensures consistent width for percentages */
     text-align: right; /* Aligns percentage text to the right */
 }
 
 /* Increase the width of the slider */
-.slider-container {
+.market-overview .slider-container {
     width: 100%; /* Set it to take full width of the parent */
     max-width: 450px; /* Optional: Limit the maximum width */
     margin: 0 auto; /* Center align the slider */
 }
 
 /* Adjusting rc-slider width directly */
-.rc-slider {
+.market-overview .rc-slider {
     width: 100%;
 }

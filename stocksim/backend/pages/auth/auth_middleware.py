@@ -1,8 +1,9 @@
+# File: backend/pages/auth/auth_middleware.py
+
 from functools import wraps
 from flask import request, jsonify
 from .jwt_service import JWTService
-from databases.auth_db import get_auth_db
-
+from models.models import get_auth_db  # Updated import from models.py
 
 def require_auth(f):
     @wraps(f)

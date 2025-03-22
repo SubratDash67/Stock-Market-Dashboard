@@ -1,28 +1,53 @@
 /* File: src/pages/TradePage.css */
 
 .trade-page {
+    max-width: 900px;
+    margin: auto;
     padding: 20px;
+    font-family: Arial, sans-serif;
 }
 
-.trade-interface form {
+/* Trade Interface */
+.trade-page .trade-interface {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.trade-page .trade-interface h2 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.trade-page .trade-interface form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.trade-interface label {
+.trade-page .trade-interface label {
     font-weight: bold;
 }
 
-.trade-interface input,
-.trade-interface select {
-    padding: 8px;
+.trade-page .trade-interface input,
+.trade-page .trade-interface select {
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    width: 100%;
 }
 
-.trade-interface button {
-    padding: 10px 15px;
+/* Trade Buttons */
+.trade-page .trade-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.trade-page .trade-buttons button {
+    flex: 1;
+    padding: 10px;
     background-color: #007bff;
     color: white;
     border: none;
@@ -30,28 +55,150 @@
     cursor: pointer;
 }
 
-.trade-interface button:hover {
+.trade-page .trade-buttons button:hover {
     background-color: #0056b3;
 }
 
-.options-chain table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
+/* Portfolio Section */
+.trade-page .portfolio {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.options-chain th,
-.options-chain td {
+.trade-page .portfolio h2 {
+    text-align: center;
+}
+
+.trade-page .portfolio button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.trade-page .portfolio button:hover {
+    background-color: #218838;
+}
+
+/* Portfolio Table */
+.trade-page .portfolio table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.trade-page .portfolio th,
+.trade-page .portfolio td {
     border: 1px solid #ccc;
     padding: 10px;
     text-align: center;
 }
 
-.basket-orders {
-    margin: 20px 0;
+.trade-page .portfolio th {
+    background-color: #007bff;
+    color: white;
 }
 
-.basket-orders button {
+/* Basket Orders */
+.trade-page .basket-orders {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.trade-page .basket-orders h2 {
+    text-align: center;
+}
+
+.trade-page .basket-orders ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.trade-page .basket-orders li {
+    background: #ffffff;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.trade-page .basket-orders button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #ffc107;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.trade-page .basket-orders button:hover {
+    background-color: #e0a800;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .trade-page {
+        padding: 15px;
+    }
+
+    .trade-page .trade-buttons {
+        flex-direction: column;
+    }
+
+    .trade-page .trade-buttons button {
+        width: 100%;
+    }
+}
+/* Auto-Suggestions */
+.trade-page .suggestions {
+    background: #fff;
+    border: 1px solid #ccc;
+    position: absolute;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.trade-page .suggestions li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.trade-page .suggestions li:hover {
+    background: #007bff;
+    color: white;
+}
+
+/* Modal */
+.trade-page .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.trade-page .modal button {
     margin-right: 10px;
     padding: 10px;
     background-color: #007bff;
@@ -61,6 +208,17 @@
     cursor: pointer;
 }
 
-.basket-orders button:hover {
+.trade-page .modal button:hover {
     background-color: #0056b3;
+}
+
+/* Profit/Loss Colors */
+.trade-page .profit {
+    color: green;
+    font-weight: bold;
+}
+
+.trade-page .loss {
+    color: red;
+    font-weight: bold;
 }
