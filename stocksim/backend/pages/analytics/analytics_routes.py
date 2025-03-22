@@ -1,149 +1,152 @@
-# analytics_routes.py
+from flask import Blueprint, request, jsonify
+import pandas as pd
+from datetime import datetime
 
-from flask import Blueprint, jsonify, request
-from .analytics_service import (
-    predict_stock_price,
-    generate_trading_signals,
-    get_stock_fundamentals,
-    get_similar_stocks,
-    compare_stocks,
-    get_options_data,
+from .stock_utils import get_stock_suggestions
+from .data_processor import (
+    load_stock_data,
+    get_stock_date_range,
+    filter_stock_data_by_date,
 )
-import logging
-import requests
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-ALPHAVANTAGE_API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
+from .analysis_strategies import (
+    calculate_moving_averages,
+    calculate_rsi,
+    generate_ma_chart,
+    generate_rsi_chart,
+)
 
 analytics_bp = Blueprint("analytics", __name__)
 
 
-def search_similar_stocks(symbol):
-    url = f"https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={symbol}&apikey={ALPHAVANTAGE_API_KEY}"
-    response = requests.get(url)
-    data = response.json()
-    if "bestMatches" in data:
-        return data["bestMatches"]
-    else:
-        return []
+@analytics_bp.route("/api/analytics/stock-suggestions", methods=["GET"])
+def stock_suggestions():
+    query = request.args.get("query", "")
+    if not query or len(query) < 2:
+        return jsonify({"suggestions": []})
+
+    suggestions = get_stock_suggestions(query)
+    return jsonify({"suggestions": suggestions})
 
 
-@analytics_bp.errorhandler(Exception)
-def handle_error(error):
-    logging.error(f"Error: {str(error)}")
-    return jsonify({"status": "error", "message": str(error)}), 500
+@analytics_bp.route("/api/analytics/stock-info", methods=["GET"])
+def stock_info():
+    stock_name = request.args.get("stock")
+    exchange = request.args.get("exchange", "ns").lower()
+
+    if not stock_name:
+        return jsonify({"error": "Stock name is required"}), 400
+
+    # Get date range for the stock
+    start_date, end_date = get_stock_date_range(stock_name, exchange)
+
+    if not start_date or not end_date:
+        return jsonify({"error": "Stock data not found"}), 404
+
+    return jsonify(
+        {
+            "stock": stock_name,
+            "exchange": exchange,
+            "dateRange": {"start": start_date, "end": end_date},
+        }
+    )
 
 
-@analytics_bp.route("/predict/", methods=["GET"])
-def predict_stock():
-    symbol = request.args.get("symbol")
-    prediction_type = request.args.get("type", "daily")
-    if not symbol:
-        return (
-            jsonify({"status": "error", "message": "symbol parameter is required"}),
-            400,
-        )
+@analytics_bp.route("/api/analytics/moving-average", methods=["GET"])
+def moving_average_analysis():
+    stock_name = request.args.get("stock")
+    exchange = request.args.get("exchange", "ns").lower()
+    start_date = request.args.get("start_date")
+    end_date = request.args.get("end_date")
+    short_window = int(request.args.get("short_window", 20))
+    long_window = int(request.args.get("long_window", 50))
 
-    try:
-        predicted_price = predict_stock_price(symbol, prediction_type)
-        return (
-            jsonify(
-                {
-                    "status": "success",
-                    "symbol": symbol,
-                    "prediction_type": prediction_type,
-                    "predicted_price": round(predicted_price, 4),
-                }
-            ),
-            200,
-        )
-    except Exception as e:
-        return handle_error(e)
+    if not stock_name:
+        return jsonify({"error": "Stock name is required"}), 400
 
+    # Load stock data
+    df = load_stock_data(stock_name, exchange)
+    if df is None:
+        return jsonify({"error": "Stock data not found"}), 404
 
-@analytics_bp.route("/stock_health", methods=["GET"])
-def stock_health():
-    symbol = request.args.get("symbol")
-    if not symbol:
-        return (
-            jsonify({"status": "error", "message": "symbol parameter is required"}),
-            400,
-        )
+    # Filter by date if provided
+    if start_date and end_date:
+        df = filter_stock_data_by_date(df, start_date, end_date)
 
-    try:
-        fundamentals = get_stock_fundamentals(symbol)
-        return jsonify({"status": "success", "data": fundamentals}), 200
-    except Exception as e:
-        return handle_error(e)
+    # Calculate moving averages
+    result_df = calculate_moving_averages(df, short_window, long_window)
 
+    # Generate chart
+    chart_image = generate_ma_chart(result_df, short_window, long_window)
 
-@analytics_bp.route("/trading_signals", methods=["GET"])
-def trading_signals():
-    symbol = request.args.get("symbol")
-    if not symbol:
-        return (
-            jsonify({"status": "error", "message": "symbol parameter is required"}),
-            400,
-        )
+    # Prepare summary data
+    summary = {
+        "totalPeriods": len(result_df),
+        "buySignals": int(result_df["Position"].value_counts().get(1, 0)),
+        "sellSignals": int(result_df["Position"].value_counts().get(-1, 0)),
+        "lastSignal": "Buy" if result_df["Signal"].iloc[-1] == 1 else "Sell",
+    }
 
-    try:
-        signals = generate_trading_signals(symbol)
-        return jsonify({"status": "success", "data": signals}), 200
-    except Exception as e:
-        return handle_error(e)
+    # Convert to JSON-serializable format
+    result = result_df[
+        [
+            "Date",
+            "Close",
+            f"SMA_{short_window}",
+            f"SMA_{long_window}",
+            "Signal",
+            "Position",
+        ]
+    ].tail(50)
+    result["Date"] = result["Date"].dt.strftime("%Y-%m-%d")
+
+    return jsonify(
+        {"summary": summary, "chart": chart_image, "data": result.to_dict("records")}
+    )
 
 
-@analytics_bp.route("/compare_stocks", methods=["GET"])
-def compare():
-    stock1 = request.args.get("stock1")
-    stock2 = request.args.get("stock2")
-    if not stock1 or not stock2:
-        return (
-            jsonify(
-                {
-                    "status": "error",
-                    "message": "Both stock1 and stock2 parameters are required",
-                }
-            ),
-            400,
-        )
+@analytics_bp.route("/api/analytics/rsi", methods=["GET"])
+def rsi_analysis():
+    stock_name = request.args.get("stock")
+    exchange = request.args.get("exchange", "ns").lower()
+    start_date = request.args.get("start_date")
+    end_date = request.args.get("end_date")
+    window = int(request.args.get("window", 14))
 
-    try:
-        comparison = compare_stocks(stock1, stock2)
-        return jsonify({"status": "success", "data": comparison}), 200
-    except Exception as e:
-        return handle_error(e)
+    if not stock_name:
+        return jsonify({"error": "Stock name is required"}), 400
 
+    # Load stock data
+    df = load_stock_data(stock_name, exchange)
+    if df is None:
+        return jsonify({"error": "Stock data not found"}), 404
 
-@analytics_bp.route("/similar_stocks", methods=["GET"])
-def similar_stocks():
-    symbol = request.args.get("symbol")
-    if not symbol:
-        return (
-            jsonify({"status": "error", "message": "symbol parameter is required"}),
-            400,
-        )
+    # Filter by date if provided
+    if start_date and end_date:
+        df = filter_stock_data_by_date(df, start_date, end_date)
 
-    try:
-        similar = get_similar_stocks(symbol)
-        return jsonify({"status": "success", "data": similar}), 200
-    except Exception as e:
-        return handle_error(e)
+    # Calculate RSI
+    result_df = calculate_rsi(df, window)
 
+    # Generate chart
+    chart_image = generate_rsi_chart(result_df, window)
 
-@analytics_bp.route("/options_data", methods=["GET"])
-def options_data():
-    symbol = request.args.get("symbol")
-    if not symbol:
-        return (
-            jsonify({"status": "error", "message": "symbol parameter is required"}),
-            400,
-        )
+    # Prepare summary data
+    summary = {
+        "totalPeriods": len(result_df),
+        "oversoldSignals": int((result_df["RSI_Signal"] == 1).sum()),
+        "overboughtSignals": int((result_df["RSI_Signal"] == -1).sum()),
+        "currentRSI": float(result_df["RSI"].iloc[-1]),
+        "currentStatus": (
+            "Overbought"
+            if result_df["RSI"].iloc[-1] > 70
+            else "Oversold" if result_df["RSI"].iloc[-1] < 30 else "Neutral"
+        ),
+    }
 
-    try:
-        options = get_options_data(symbol)
-        return jsonify({"status": "success", "data": options}), 200
-    except Exception as e:
-        return handle_error(e)
+    # Convert to JSON-serializable format
+    result = result_df[["Date", "Close", "RSI", "RSI_Signal"]].tail(50)
+    result["Date"] = result["Date"].dt.strftime("%Y-%m-%d")
+
+    return jsonify(
+        {"summary": summary, "chart": chart_image, "data": result.to_dict("records")}
+    )
