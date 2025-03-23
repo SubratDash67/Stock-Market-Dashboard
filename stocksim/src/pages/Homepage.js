@@ -1,6 +1,8 @@
 // File: src/pages/HomePage.js
 import React from "react";
 import "./Homepage.css";
+import { Link } from "react-router-dom";
+
 
 const HomePage = () => {
     return (
@@ -15,7 +17,7 @@ const HomePage = () => {
                     </h2>
                     <p>Begin with ₹5,00,000 virtual capital and practice risk-free investing</p>
 
-                    <button className="cta-button">Start Trading Now</button>
+                    <Link to="/trade" className="cta-button">Start Trading Now</Link>
                 </section>
                 <div className="paper-trading-section">
                     <div className="paper-trading-content">
@@ -41,11 +43,22 @@ const HomePage = () => {
                             <div className="benefit-box">Build Confidence and Momentum</div>
                         </div>
 
-                        <button className="read-more-button">Read More</button>
-
+                        <Link to="/about" className="read-more-button">Read More</Link>
                     </div>
                     <img src="./chart.png" alt="Trading Chart" className="chart-image"/>
                 </div>
+
+
+                {/* New Section Above Market Trends */}
+                <section className="new-section">
+                    <Link to="/404" className="new-section-link">
+                        <div className="new-section-box">
+                            <div className="new-section-content">
+                                <h1>Code 404</h1>
+                            </div>
+                        </div>
+                    </Link>
+                </section>
 
                 {/* Top Market Trends */}
                 <section className="market-trends">
@@ -119,13 +132,22 @@ const HomePage = () => {
                     <h2 className="access-section-title">Quick Actions</h2>
                     <p className="section-descriptionn">
                         Maximize your trading potential with expert insights!
-                        Learn essential strategies, risk management techniques, and the latest market trends to make informed decisions.
+                        Learn essential strategies, risk management techniques, and the latest market trends to make
+                        informed decisions.
                     </p>
                     <div className="quick-buttons">
-                        <button>Trade Now</button>
-                        <button>Market Screener</button>
-                        <button>Investment Strategies</button>
-                        <button>Portfolio Analytics</button>
+                        <Link to="/trade">
+                            <button>Trade Now</button>
+                        </Link>
+                        <Link to="/market">
+                            <button>Market Screener</button>
+                        </Link>
+                        <Link to="/analytics">
+                            <button>Investment Strategies</button>
+                        </Link>
+                        <Link to="/portfolio">
+                            <button>Portfolio Analytics</button>
+                        </Link>
                     </div>
                 </section>
             </div>
