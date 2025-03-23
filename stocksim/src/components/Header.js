@@ -11,8 +11,9 @@ const Header = () => {
         <div className="header-page">
             <header className="header">
                 <div className="header-left">
-                    <h1 className="logo">StockSim</h1>
-                    <p className="tagline">Your Ultimate Virtual Trading Experience</p>
+                    <Link to="/">
+                        <img src="./logo.png" alt="Logo" className="header-logo" />
+                    </Link>
                 </div>
                 <nav className="header-nav">
                     <ul className="nav-links">

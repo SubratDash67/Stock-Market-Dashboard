@@ -1,42 +1,148 @@
-/* File: src/components/Footer.css */
-
 .footer-page .footer {
-    background-color: #f9f9f9;
-    padding: 20px;
-    text-align: center;
-    border-top: 1px solid #ddd;
-}
-
-.footer-page .footer-links {
+    background-color: #161179;
+    padding: 20px 30px;
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 15px;
+    flex-direction: column; /* Stack content and footer-bottom */
+    align-items: center;
+    border-top: 1px solid #161179;
+    width: auto;
 }
 
-.footer-page .footer-links a {
-    color: #007bff;
+.footer-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Left Section */
+.footer-page .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.footer-logo-title {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjust spacing between logo and title */
     text-decoration: none;
+}
+
+.footer-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #FBE4D6;
+    text-align: center;
+}
+
+.footer-page .footer-left .footer-logo {
+    width: 50px; /* Adjust as needed */
+    height: auto;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+    margin-left: -50px;
+}
+
+.social-circle {
+    width: 40px;
+    height: 40px;
+    background-color: #261FB3;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.social-circle:hover {
+    transform: scale(1.1);
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Center Section for About & Contact */
+.footer-center {
+    display: flex;
+    flex-direction: row; /* Make links inline */
+    justify-content: center; /* Center the links */
+    gap: 20px; /* Add spacing between links */
+    margin-top: 40px;
+}
+
+.footer-link {
+    font-size: 16px;
+    color: #FBE4D6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #FFD700;
+}
+
+/* Right Section for Newsletter */
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.footer-news-text {
+    font-size: 16px;
+    color: #FBE4D6;
+    margin: 0;
+}
+
+.newsletter {
+    display: flex;
+    gap: 10px;
+}
+
+.newsletter-input {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
     font-size: 14px;
 }
 
-.footer-page .footer-links a:hover {
-    text-decoration: underline;
+.newsletter-submit {
+    padding: 8px 16px;
+    background-color: #261FB3;
+    border: none;
+    border-radius: 4px;
+    color: #FBE4D6;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
-.footer-page .social-media {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 15px;
+.newsletter-submit:hover {
+    background-color: #161179;
 }
 
-.footer-page .social-media img {
-    width: 24px;
-    height: 24px;
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 5px;
+    padding-top: 10px;
+    border-top: 1px solid #161179;
 }
 
 .footer-page .footer-copyright {
-    font-size: 12px;
-    color: #666;
+    font-size: 14px;
+    color: #FBE4D6;
+    margin: 0;
+    text-align: center;
 }

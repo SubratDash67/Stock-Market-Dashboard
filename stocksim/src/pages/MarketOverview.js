@@ -195,7 +195,7 @@ const MarketOverview = () => {
                                                 {
                                                     label: `${indexName} Price`,
                                                     data: trend.prices,
-                                                    borderColor: "rgba(75,192,192,1)",
+                                                    borderColor: "#FBE4D6",
                                                     borderWidth: 1, // Thinner line
                                                     pointRadius: 1, // Smaller points
                                                 },
