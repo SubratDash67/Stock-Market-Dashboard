@@ -190,9 +190,9 @@ const TradePage = () => {
 
     return (
         <div className="trade-page">
+            <h2 id="page-heading">Trade Interface</h2>
             {/* Trade Interface */}
             <section className="trade-interface">
-                <h2>Trade Interface</h2>
                 {message && <p className="trade-message">{message}</p>}
                 <form onSubmit={handleSubmit}>
                     <div>
@@ -315,16 +315,20 @@ const TradePage = () => {
                             <li key={index}>
                                 {trade.trade_type} {trade.quantity} {trade.symbol} @ {trade.order_type}
                                 {trade.limit_price ? ` (Limit Price: ₹${trade.limit_price})` : ""}
-                                <button onClick={() => removeFromBasket(index)}>❌</button>
+                                <button onClick={() => removeFromBasket(index)}>
+                                    <img src="./remove.png" alt="Remove"
+                                         style={{width: "20px", height: "20px"}}/>
+                                </button>
                             </li>
                         ))
                     ) : (
                         <p>No trades in basket.</p>
                     )}
                 </ul>
-
-                <button onClick={executeBasket}>Execute Basket</button>
-                <button onClick={clearBasket}>Clear Basket</button>
+                <div className="basket-buttons">
+                    <button onClick={executeBasket}>Execute Basket</button>
+                    <button onClick={clearBasket}>Clear Basket</button>
+                </div>
             </section>
         </div>
     );

@@ -180,9 +180,9 @@
 }
 
 .market-overview .sector-buttons button.active {
-    background-color:#e0a800;
+    background-color:black;
     color: #fff;
-    border-color: #e0a800;
+    border-color: black;
 }
 
 .market-overview .gainers-losers-container ul {
