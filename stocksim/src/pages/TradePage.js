@@ -189,7 +189,14 @@ const TradePage = () => {
 
     return (
         <div className="trade-page">
-            <h2 id="page-heading">Trade Interface</h2>
+            <h1 id="page-heading">Trade Interface</h1>
+            <p className="section-description">
+                The Trade Interface allows you to place buy and sell orders for stocks. Enter the stock symbol, specify
+                the quantity, and choose an order type: "Market" (executes at the current price), "Limit" (executes at a
+                specified price), or "Stop Loss" (executes when a trigger price is reached). Live price updates are
+                available for selected stocks. Before confirming a trade, you can review details in a confirmation
+                modal. You can also add trades to the Basket for batch execution or save them for later.
+            </p>
             {/* Trade Interface */}
             <section className="trade-interface">
                 {message && <p className="trade-message">{message}</p>}
@@ -270,6 +277,14 @@ const TradePage = () => {
             {/* Portfolio Section */}
             <section className="portfolio">
                 <h2>My Portfolio</h2>
+                <p className="section-description">
+                    The My Portfolio section provides an overview of your stock holdings, including the quantity held,
+                    average purchase price, current market price, and profit/loss calculations. Click "Refresh
+                    Portfolio" to update stock prices in real-time. Profit or loss for each stock is calculated based on
+                    the latest price and is color-coded: green for gains and red for losses. Use this section to monitor
+                    your investments and make informed trading decisions.
+                </p>
+
                 <button onClick={updatePortfolio}>Refresh Portfolio</button>
                 {portfolio.length > 0 ? (
                     <table>
@@ -307,7 +322,9 @@ const TradePage = () => {
             {/* Basket Orders */}
             <section className="basket-orders">
                 <h2>Basket Orders</h2>
-                <p>Create and execute multiple trades in one order.</p>
+                <p className="section-description">
+                    Basket Orders allow you to group multiple trades and execute them in a single transaction. Add buy or sell orders to the basket by selecting stock symbols, quantities, and order types. Once your basket is ready, you can execute all trades at once or remove individual orders before execution. This feature helps streamline trading and ensures efficient order placement, especially when managing multiple stocks.
+                </p>
                 <ul>
                     {basket.length > 0 ? (
                         basket.map((trade, index) => (

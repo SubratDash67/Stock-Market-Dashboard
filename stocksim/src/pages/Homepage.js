@@ -8,34 +8,46 @@ const HomePage = () => {
             <div className="home-page">
                 {/* Hero Section */}
                 <section className="hero-section">
-                    <h1>Unlimited Trading Experience</h1>
+                    <h1>Paper Trading Platform with AI Analytics</h1>
+                    <h2 id="betterh2">Unlimited Trading Experience</h2>
+                    <h2>
+                        Experience the Thrill of Live Trading with <span style={{color: '#FFC6A5'}}>Zero Risk!</span>
+                    </h2>
                     <p>Begin with ₹5,00,000 virtual capital and practice risk-free investing</p>
+
                     <button className="cta-button">Start Trading Now</button>
                 </section>
+                <div className="paper-trading-section">
+                    <div className="paper-trading-content">
+                        <p className="stocksim-notice">
+                            Why Paper Trading Should Be Your First Step Before You Invest Real
+                        </p>
 
-                {/* Portfolio Overview */}
-                <section className="portfolio-overview">
-                    <h2 className="section-title">Your Portfolio</h2>
-                    <div className="portfolio-stats">
-                        <div className="stat-card">
-                            <h3>Total Portfolio Value</h3>
-                            <p>₹5,00,000</p>
-                        </div>
-                        <div className="stat-card">
-                            <h3>Total Returns</h3>
-                            <p>+₹50,000</p>
-                        </div>
-                        <div className="stat-card">
-                            <h3>Active Positions</h3>
-                            <p>5 Stocks</p>
+                        <p className="section-description">
+                            Tempting as it may be to dive headfirst into the exciting world of stock trading, seasoned
+                            investors
+                            and newbies alike agree: paper trading is your secret weapon for success. Before risking
+                            your
+                            hard-earned cash, put your skills to the test in a risk-free virtual trading environment.
+                            Think of
+                            it as a training ground where you can learn, experiment, and build confidence without losing
+                            a
+                            single penny.
+                        </p>
+                        <div className="trading-benefits">
+                            <div className="benefit-box">Master the Mechanics</div>
+                            <div className="benefit-box">Discipline Your Emotions</div>
+                            <div className="benefit-box">Fine-Tune Your Techniques</div>
+                            <div className="benefit-box">Build Confidence and Momentum</div>
                         </div>
                     </div>
-                    <button className="view-portfolio-button">View Details</button>
-                </section>
+                    <img src="./chart.png" alt="Trading Chart" className="chart-image"/>
+                </div>
+
 
                 {/* Top Market Trends */}
                 <section className="market-trends">
-                    <h2 className="section-title">Market Insights</h2>
+                    <h2 className="market-section-title">Market Insights</h2>
                     <div className="trends-container">
                         <div className="trend-box">
                             <h3>Top Gainers</h3>

@@ -153,7 +153,16 @@ const MarketOverview = () => {
         <div className="market-overview">
             {/* Market Trends Section */}
             <section className="market-trends">
-                <h2>Market Trends</h2>
+                <h1>Market Trends</h1>
+                <p className="section-description">
+                    Explore the latest market trends with real-time price updates and performance analysis of major
+                    indices.
+                    Each index displays its current price, daily change, and percentage movement.
+                    Click on an index to view its historical price changes through interactive charts, helping you
+                    analyze market patterns over time.
+                    Green values indicate a positive change, while red values signify a decline.
+                    This page also allows you to use a Neo-screener and check the top ten Gainers and losers of the day based the selected sector.
+                </p>
                 <div className="indices">
                     {Object.entries(marketTrends).map(([indexName, trend]) => (
                         <div
@@ -231,6 +240,16 @@ const MarketOverview = () => {
 
             <section className="neo-screener">
                 <h2>Neo-Screener</h2>
+                <p className="section-description">
+                    The Neo-Screener helps you filter stocks based on investment type, sector, and valuation. Use the
+                    search bar to find stocks by symbol or industry. Click on stock type filters like "Growth Stock,"
+                    "Stability Stock," or "Dividend Stock" to refine results, selecting only one at a time. Choose a
+                    sector (e.g., Technology, Healthcare) to narrow your focus, with only one sector active at a time.
+                    Adjust the P/E Ratio slider to filter stocks by valuation, from undervalued to overvalued. The table
+                    below updates automatically to show matching stocks with key financial details, helping you discover
+                    investment opportunities efficiently.
+                </p>
+
                 <div className="neo-screener-input">
                     <input
                         type="text"
@@ -307,7 +326,13 @@ const MarketOverview = () => {
                                 {borderColor: "#3b82f6", backgroundColor: "#fff"},
                             ]}
                         />
-                        <label style={{display: "block", marginTop: "-30px", marginBottom: "20px", fontSize: "14px",fontWeight: "bold"}}>
+                        <label style={{
+                            display: "block",
+                            marginTop: "-30px",
+                            marginBottom: "20px",
+                            fontSize: "14px",
+                            fontWeight: "bold"
+                        }}>
                             P/E Ratio : {sliderRange[0]} - {sliderRange[1]}
                         </label>
                     </div>

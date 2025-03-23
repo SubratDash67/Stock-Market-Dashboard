@@ -150,322 +150,336 @@ const AnalyticsStrategiesPage = () => {
   };
 
   return (
-    <Container className="analytics-page">
-      <h1 className="page-title">Stock Analysis Strategies</h1>
-      
-      <Card className="mb-4">
-        <Card.Header>Select Stock</Card.Header>
-        <Card.Body>
-          <Form>
-            <Row>
-              <Col md={6}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Search for a stock</Form.Label>
-                  <div className="suggestion-container">
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter stock name or symbol"
-                      value={query}
-                      onChange={(e) => setQuery(e.target.value)}
-                    />
-                    {suggestions.length > 0 && (
-                      <div className="suggestions-dropdown">
-                        {suggestions.map((stock, index) => (
-                          <div 
-                            key={index} 
-                            className="suggestion-item"
-                            onClick={() => handleSelectStock(stock)}
-                          >
-                            {stock}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </Form.Group>
-              </Col>
-              <Col md={6}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Selected Stock</Form.Label>
-                  <div className="selected-stock">
-                    {selectedStock ? (
-                      <span>{selectedStock}.{selectedExchange.toUpperCase()}</span>
-                    ) : (
-                      <span className="text-muted">No stock selected</span>
-                    )}
-                  </div>
-                </Form.Group>
-              </Col>
-            </Row>
+      <Container className="analytics-page">
+        <h1 className="page-title">Stock Analysis Strategies</h1>
+        <p className="section-description">
+          The Stock Analysis Strategies page helps you analyze stocks using technical indicators like "Moving Averages"
+          and "Relative Strength Index (RSI)".
+          Start by searching for a stock symbol and selecting an exchange. Once a stock is chosen, set a "date range" to
+          analyze historical price movements.
+          Use the "Moving Average Crossover Strategy" to detect potential buy and sell signals by comparing short-term
+          and long-term price trends.
+          The "RSI Strategy" helps determine whether a stock is "overbought" (potential sell signal) or "oversold"
+          (potential buy signal) based on momentum indicators.
+          Both strategies generate visual charts and key data points to assist in decision-making. Modify analysis
+          parameters, such as the "short and long window for moving averages" or the "RSI window", to refine results.
+          The insights from these strategies can support informed trading and investment decisions.
+        </p>
 
-            {dateRange.start && (
+        <Card className="mb-4">
+          <Card.Header>Select Stock</Card.Header>
+          <Card.Body>
+            <Form>
               <Row>
                 <Col md={6}>
                   <Form.Group className="mb-3">
-                    <Form.Label>Start Date</Form.Label>
-                    <Form.Control
-                      type="date"
-                      value={startDate}
-                      onChange={(e) => setStartDate(e.target.value)}
-                      min={dateRange.start}
-                      max={dateRange.end}
-                    />
+                    <Form.Label>Search for a stock</Form.Label>
+                    <div className="suggestion-container">
+                      <Form.Control
+                          type="text"
+                          placeholder="Enter stock name or symbol"
+                          value={query}
+                          onChange={(e) => setQuery(e.target.value)}
+                      />
+                      {suggestions.length > 0 && (
+                          <div className="suggestions-dropdown">
+                            {suggestions.map((stock, index) => (
+                                <div
+                                    key={index}
+                                    className="suggestion-item"
+                                    onClick={() => handleSelectStock(stock)}
+                                >
+                                  {stock}
+                                </div>
+                            ))}
+                          </div>
+                      )}
+                    </div>
                   </Form.Group>
                 </Col>
                 <Col md={6}>
                   <Form.Group className="mb-3">
-                    <Form.Label>End Date</Form.Label>
-                    <Form.Control
-                      type="date"
-                      value={endDate}
-                      onChange={(e) => setEndDate(e.target.value)}
-                      min={dateRange.start}
-                      max={dateRange.end}
-                    />
+                    <Form.Label>Selected Stock</Form.Label>
+                    <div className="selected-stock">
+                      {selectedStock ? (
+                          <span>{selectedStock}.{selectedExchange.toUpperCase()}</span>
+                      ) : (
+                          <span className="text-muted">No stock selected</span>
+                      )}
+                    </div>
                   </Form.Group>
                 </Col>
               </Row>
-            )}
-          </Form>
-        </Card.Body>
-      </Card>
 
-      <Row>
-        <Col md={6}>
-          <Card className="mb-4">
-            <Card.Header>Moving Average Crossover Strategy</Card.Header>
-            <Card.Body>
-              <Form>
-                <Row>
-                  <Col md={6}>
-                    <Form.Group className="mb-3">
-                      <Form.Label>Short Window (days)</Form.Label>
-                      <Form.Control
+              {dateRange.start && (
+                  <Row>
+                    <Col md={6}>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Start Date</Form.Label>
+                        <Form.Control
+                            type="date"
+                            value={startDate}
+                            onChange={(e) => setStartDate(e.target.value)}
+                            min={dateRange.start}
+                            max={dateRange.end}
+                        />
+                      </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                      <Form.Group className="mb-3">
+                        <Form.Label>End Date</Form.Label>
+                        <Form.Control
+                            type="date"
+                            value={endDate}
+                            onChange={(e) => setEndDate(e.target.value)}
+                            min={dateRange.start}
+                            max={dateRange.end}
+                        />
+                      </Form.Group>
+                    </Col>
+                  </Row>
+              )}
+            </Form>
+          </Card.Body>
+        </Card>
+
+        <Row>
+          <Col md={6}>
+            <Card className="mb-4">
+              <Card.Header>Moving Average Crossover Strategy</Card.Header>
+              <Card.Body>
+                <Form>
+                  <Row>
+                    <Col md={6}>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Short Window (days)</Form.Label>
+                        <Form.Control
+                            type="number"
+                            min="5"
+                            max="100"
+                            value={shortWindow}
+                            onChange={(e) => setShortWindow(parseInt(e.target.value))}
+                        />
+                      </Form.Group>
+                    </Col>
+                    <Col md={6}>
+                      <Form.Group className="mb-3">
+                        <Form.Label>Long Window (days)</Form.Label>
+                        <Form.Control
+                            type="number"
+                            min="20"
+                            max="200"
+                            value={longWindow}
+                            onChange={(e) => setLongWindow(parseInt(e.target.value))}
+                        />
+                      </Form.Group>
+                    </Col>
+                  </Row>
+                  <Button
+                      variant="primary"
+                      onClick={fetchMovingAverageAnalysis}
+                      disabled={!selectedStock || loading}
+                  >
+                    Analyze Moving Averages
+                  </Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col md={6}>
+            <Card className="mb-4">
+              <Card.Header>Relative Strength Index (RSI) Strategy</Card.Header>
+              <Card.Body>
+                <Form>
+                  <Form.Group className="mb-3">
+                    <Form.Label>RSI Window (days)</Form.Label>
+                    <Form.Control
                         type="number"
-                        min="5"
-                        max="100"
-                        value={shortWindow}
-                        onChange={(e) => setShortWindow(parseInt(e.target.value))}
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col md={6}>
-                    <Form.Group className="mb-3">
-                      <Form.Label>Long Window (days)</Form.Label>
-                      <Form.Control
-                        type="number"
-                        min="20"
-                        max="200"
-                        value={longWindow}
-                        onChange={(e) => setLongWindow(parseInt(e.target.value))}
-                      />
-                    </Form.Group>
-                  </Col>
-                </Row>
-                <Button 
-                  variant="primary" 
-                  onClick={fetchMovingAverageAnalysis}
-                  disabled={!selectedStock || loading}
+                        min="7"
+                        max="30"
+                        value={rsiWindow}
+                        onChange={(e) => setRsiWindow(parseInt(e.target.value))}
+                    />
+                  </Form.Group>
+                  <Button
+                      variant="primary"
+                      onClick={fetchRsiAnalysis}
+                      disabled={!selectedStock || loading}
+                  >
+                    Analyze RSI
+                  </Button>
+                </Form>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+
+        {loading && (
+            <div className="text-center my-4">
+              <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
+            </div>
+        )}
+
+        {error && <Alert variant="danger">{error}</Alert>}
+
+        {(maData || rsiData) && (
+            <Card className="mb-4">
+              <Card.Header>
+                <Tabs
+                    activeKey={activeTab}
+                    onSelect={(k) => setActiveTab(k)}
+                    className="mb-3"
                 >
-                  Analyze Moving Averages
-                </Button>
-              </Form>
-            </Card.Body>
-          </Card>
-        </Col>
-        
-        <Col md={6}>
-          <Card className="mb-4">
-            <Card.Header>Relative Strength Index (RSI) Strategy</Card.Header>
-            <Card.Body>
-              <Form>
-                <Form.Group className="mb-3">
-                  <Form.Label>RSI Window (days)</Form.Label>
-                  <Form.Control
-                    type="number"
-                    min="7"
-                    max="30"
-                    value={rsiWindow}
-                    onChange={(e) => setRsiWindow(parseInt(e.target.value))}
-                  />
-                </Form.Group>
-                <Button 
-                  variant="primary" 
-                  onClick={fetchRsiAnalysis}
-                  disabled={!selectedStock || loading}
-                >
-                  Analyze RSI
-                </Button>
-              </Form>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-
-      {loading && (
-        <div className="text-center my-4">
-          <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
-        </div>
-      )}
-
-      {error && <Alert variant="danger">{error}</Alert>}
-
-      {(maData || rsiData) && (
-        <Card className="mb-4">
-          <Card.Header>
-            <Tabs
-              activeKey={activeTab}
-              onSelect={(k) => setActiveTab(k)}
-              className="mb-3"
-            >
-              <Tab eventKey="moving-average" title="Moving Average Crossover">
-                {maData && (
-                  <div className="analysis-results">
-                    <h3>Moving Average Analysis Results</h3>
-                    <div className="summary-box">
-                      <div className="summary-item">
-                        <span className="label">Total Periods:</span>
-                        <span className="value">{maData.summary.totalPeriods}</span>
-                      </div>
-                      <div className="summary-item">
-                        <span className="label">Buy Signals:</span>
-                        <span className="value">{maData.summary.buySignals}</span>
-                      </div>
-                      <div className="summary-item">
-                        <span className="label">Sell Signals:</span>
-                        <span className="value">{maData.summary.sellSignals}</span>
-                      </div>
-                      <div className="summary-item">
-                        <span className="label">Last Signal:</span>
-                        <span className={`value ${maData.summary.lastSignal === 'Buy' ? 'text-success' : 'text-danger'}`}>
+                  <Tab eventKey="moving-average" title="Moving Average Crossover">
+                    {maData && (
+                        <div className="analysis-results">
+                          <h3>Moving Average Analysis Results</h3>
+                          <div className="summary-box">
+                            <div className="summary-item">
+                              <span className="label">Total Periods:</span>
+                              <span className="value">{maData.summary.totalPeriods}</span>
+                            </div>
+                            <div className="summary-item">
+                              <span className="label">Buy Signals:</span>
+                              <span className="value">{maData.summary.buySignals}</span>
+                            </div>
+                            <div className="summary-item">
+                              <span className="label">Sell Signals:</span>
+                              <span className="value">{maData.summary.sellSignals}</span>
+                            </div>
+                            <div className="summary-item">
+                              <span className="label">Last Signal:</span>
+                              <span
+                                  className={`value ${maData.summary.lastSignal === 'Buy' ? 'text-success' : 'text-danger'}`}>
                           {maData.summary.lastSignal}
                         </span>
-                      </div>
-                    </div>
-                    
-                    <div className="chart-container">
-                      <h4>Moving Average Crossover Chart</h4>
-                      <Image 
-                        src={`data:image/png;base64,${maData.chart}`} 
-                        alt="Moving Average Chart" 
-                        fluid 
-                      />
-                    </div>
-                    
-                    <div className="data-table">
-                      <h4>Recent Data</h4>
-                      <Table striped bordered hover responsive>
-                        <thead>
-                          <tr>
-                            <th>Date</th>
-                            <th>Close</th>
-                            <th>SMA_{shortWindow}</th>
-                            <th>SMA_{longWindow}</th>
-                            <th>Signal</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {maData.data.map((row, index) => (
-                            <tr key={index}>
-                              <td>{row.Date}</td>
-                              <td>{row.Close.toFixed(2)}</td>
-                              <td>{row[`SMA_${shortWindow}`].toFixed(2)}</td>
-                              <td>{row[`SMA_${longWindow}`].toFixed(2)}</td>
-                              <td className={row.Signal === 1 ? 'text-success' : 'text-danger'}>
-                                {row.Signal === 1 ? 'Buy' : 'Sell'}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </Table>
-                    </div>
-                  </div>
-                )}
-              </Tab>
-              
-              <Tab eventKey="rsi" title="RSI Analysis">
-                {rsiData && (
-                  <div className="analysis-results">
-                    <h3>RSI Analysis Results</h3>
-                    <div className="summary-box">
-                      <div className="summary-item">
-                        <span className="label">Total Periods:</span>
-                        <span className="value">{rsiData.summary.totalPeriods}</span>
-                      </div>
-                      <div className="summary-item">
-                        <span className="label">Oversold Signals:</span>
-                        <span className="value">{rsiData.summary.oversoldSignals}</span>
-                      </div>
-                      <div className="summary-item">
-                        <span className="label">Overbought Signals:</span>
-                        <span className="value">{rsiData.summary.overboughtSignals}</span>
-                      </div>
-                      <div className="summary-item">
-                        <span className="label">Current RSI:</span>
-                        <span className="value">{rsiData.summary.currentRSI.toFixed(2)}</span>
-                      </div>
-                      <div className="summary-item">
-                        <span className="label">Current Status:</span>
-                        <span className={`value ${
-                          rsiData.summary.currentStatus === 'Overbought' ? 'text-danger' : 
-                          rsiData.summary.currentStatus === 'Oversold' ? 'text-success' : 
-                          'text-warning'
-                        }`}>
+                            </div>
+                          </div>
+
+                          <div className="chart-container">
+                            <h4>Moving Average Crossover Chart</h4>
+                            <Image
+                                src={`data:image/png;base64,${maData.chart}`}
+                                alt="Moving Average Chart"
+                                fluid
+                            />
+                          </div>
+
+                          <div className="data-table">
+                            <h4>Recent Data</h4>
+                            <Table striped bordered hover responsive>
+                              <thead>
+                              <tr>
+                                <th>Date</th>
+                                <th>Close</th>
+                                <th>SMA_{shortWindow}</th>
+                                <th>SMA_{longWindow}</th>
+                                <th>Signal</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              {maData.data.map((row, index) => (
+                                  <tr key={index}>
+                                    <td>{row.Date}</td>
+                                    <td>{row.Close.toFixed(2)}</td>
+                                    <td>{row[`SMA_${shortWindow}`].toFixed(2)}</td>
+                                    <td>{row[`SMA_${longWindow}`].toFixed(2)}</td>
+                                    <td className={row.Signal === 1 ? 'text-success' : 'text-danger'}>
+                                      {row.Signal === 1 ? 'Buy' : 'Sell'}
+                                    </td>
+                                  </tr>
+                              ))}
+                              </tbody>
+                            </Table>
+                          </div>
+                        </div>
+                    )}
+                  </Tab>
+
+                  <Tab eventKey="rsi" title="RSI Analysis">
+                    {rsiData && (
+                        <div className="analysis-results">
+                          <h3>RSI Analysis Results</h3>
+                          <div className="summary-box">
+                            <div className="summary-item">
+                              <span className="label">Total Periods:</span>
+                              <span className="value">{rsiData.summary.totalPeriods}</span>
+                            </div>
+                            <div className="summary-item">
+                              <span className="label">Oversold Signals:</span>
+                              <span className="value">{rsiData.summary.oversoldSignals}</span>
+                            </div>
+                            <div className="summary-item">
+                              <span className="label">Overbought Signals:</span>
+                              <span className="value">{rsiData.summary.overboughtSignals}</span>
+                            </div>
+                            <div className="summary-item">
+                              <span className="label">Current RSI:</span>
+                              <span className="value">{rsiData.summary.currentRSI.toFixed(2)}</span>
+                            </div>
+                            <div className="summary-item">
+                              <span className="label">Current Status:</span>
+                              <span className={`value ${
+                                  rsiData.summary.currentStatus === 'Overbought' ? 'text-danger' :
+                                      rsiData.summary.currentStatus === 'Oversold' ? 'text-success' :
+                                          'text-warning'
+                              }`}>
                           {rsiData.summary.currentStatus}
                         </span>
-                      </div>
-                    </div>
-                    
-                    <div className="chart-container">
-                      <h4>RSI Chart</h4>
-                      <Image 
-                        src={`data:image/png;base64,${rsiData.chart}`} 
-                        alt="RSI Chart" 
-                        fluid 
-                      />
-                    </div>
-                    
-                    <div className="data-table">
-                      <h4>Recent Data</h4>
-                      <Table striped bordered hover responsive>
-                        <thead>
-                          <tr>
-                            <th>Date</th>
-                            <th>Close</th>
-                            <th>RSI</th>
-                            <th>Signal</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {rsiData.data.map((row, index) => (
-                            <tr key={index}>
-                              <td>{row.Date}</td>
-                              <td>{row.Close.toFixed(2)}</td>
-                              <td>{row.RSI.toFixed(2)}</td>
-                              <td>
-                                {row.RSI_Signal === 1 ? (
-                                  <span className="text-success">Oversold (Buy)</span>
-                                ) : row.RSI_Signal === -1 ? (
-                                  <span className="text-danger">Overbought (Sell)</span>
-                                ) : (
-                                  <span className="text-muted">Neutral</span>
-                                )}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </Table>
-                    </div>
-                  </div>
-                )}
-              </Tab>
-            </Tabs>
-          </Card.Header>
-        </Card>
-      )}
-    </Container>
+                            </div>
+                          </div>
+
+                          <div className="chart-container">
+                            <h4>RSI Chart</h4>
+                            <Image
+                                src={`data:image/png;base64,${rsiData.chart}`}
+                                alt="RSI Chart"
+                                fluid
+                            />
+                          </div>
+
+                          <div className="data-table">
+                            <h4>Recent Data</h4>
+                            <Table striped bordered hover responsive>
+                              <thead>
+                              <tr>
+                                <th>Date</th>
+                                <th>Close</th>
+                                <th>RSI</th>
+                                <th>Signal</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              {rsiData.data.map((row, index) => (
+                                  <tr key={index}>
+                                    <td>{row.Date}</td>
+                                    <td>{row.Close.toFixed(2)}</td>
+                                    <td>{row.RSI.toFixed(2)}</td>
+                                    <td>
+                                      {row.RSI_Signal === 1 ? (
+                                          <span className="text-success">Oversold (Buy)</span>
+                                      ) : row.RSI_Signal === -1 ? (
+                                          <span className="text-danger">Overbought (Sell)</span>
+                                      ) : (
+                                          <span className="text-muted">Neutral</span>
+                                      )}
+                                    </td>
+                                  </tr>
+                              ))}
+                              </tbody>
+                            </Table>
+                          </div>
+                        </div>
+                    )}
+                  </Tab>
+                </Tabs>
+              </Card.Header>
+            </Card>
+        )}
+      </Container>
   );
 };
 

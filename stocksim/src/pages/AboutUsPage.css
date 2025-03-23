@@ -1,155 +1,238 @@
 .aboutus-page {
-    max-width: 100%;
-    margin: auto;
-    padding: 50px 200px;
-    font-family: 'Segoe UI', 'Roboto', sans-serif;
-    color: #FBE4D6;
-    background-color: #0C0950;
-  }
-  
-  .aboutus-page .about-header {
-    text-align: center;
-    margin-bottom: 3.5rem;
-  }
-  
-  .aboutus-page .about-header h1 {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #FBE4D6;
-    margin-bottom: 1rem;
-    letter-spacing: -0.5px;
-  }
-  
-  .aboutus-page .header-underline {
-    height: 4px;
-    width: 80px;
-    background: #261FB3;
-    margin: 0 auto;
-    border-radius: 2px;
-  }
-  
-  .aboutus-page h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    position: relative;
-    display: inline-block;
-    font-weight: 600;
-    color: #FBE4D6;
-  }
-  
-  .aboutus-page h2:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 40px;
-    height: 3px;
-    background: #261FB3;
-    border-radius: 2px;
-  }
-  
-  .aboutus-page p {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #FBE4D6;
-    margin-bottom: 1.25rem;
-  }
-  
-  .aboutus-page .mission-section {
-    display: flex;
-    align-items: center;
-    background: linear-gradient(135deg, #161179, #261FB3);
-    border-radius: 12px;
-    padding: 2.5rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border: 1px solid #261FB3;
-  }
-  
-  .aboutus-page .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-  }
-  
-  .aboutus-page .feature-card {
-    background: linear-gradient(135deg, #161179, #261FB3);
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border: 1px solid #261FB3;
-  }
-  
-  .aboutus-page .feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-  }
-  
-  .aboutus-page .team-members {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-  
-  .aboutus-page .team-member {
-    flex: 1;
-    max-width: 300px;
-    background: linear-gradient(135deg, #161179, #261FB3);
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border: 1px solid #261FB3;
-    transition: all 0.3s ease;
-    text-align: center;
-  }
-  
-  .aboutus-page .team-member:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-  }
-  
-  .aboutus-page .contact-form {
-    max-width: 600px;
-    margin: 0 auto;
-    background: linear-gradient(135deg, #161179, #261FB3);
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    border: 1px solid #261FB3;
-  }
-  
-  .aboutus-page .form-group input,
-  .aboutus-page .form-group textarea {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid #261FB3;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: all 0.2s ease;
-    background-color: #161179;
-    color: #FBE4D6;
-  }
-  
-  .aboutus-page .submit-button {
-    display: block;
-    width: 100%;
-    padding: 0.75rem 1.5rem;
-    background: #FBE4D6;
-    color: #161179;
-    border: none;
-    border-radius: 30px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .aboutus-page .submit-button:hover {
-    background: #261FB3;
-    color: #FBE4D6;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-  }
-  
+  max-width: 100%;
+  margin: auto;
+  padding: 50px 200px;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  color: #FBE4D6;
+  background-color: #0C0950;
+}
+
+.aboutus-page .about-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.aboutus-page .about-header h1 {
+  margin-bottom: 3rem;
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #FBE4D6;
+  position: relative;
+}
+.aboutus-page .about-header h1::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #FBE4D6, #261FB3);
+  margin: 1rem auto 0;
+  border-radius: 4px;
+}
+
+.aboutus-page h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  color: #FBE4D6;
+}
+
+
+
+.aboutus-page h2:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 40px;
+  height: 3px;
+  background: #261FB3;
+  border-radius: 2px;
+}
+
+.aboutus-page p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #FBE4D6;
+  margin-bottom: 1.25rem;
+}
+
+.aboutus-page .mission-section {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #161179, #261FB3);
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #261FB3;
+}
+
+.aboutus-page .features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.aboutus-page .feature-card {
+  background: linear-gradient(135deg, #161179, #261FB3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #261FB3;
+}
+
+.aboutus-page .feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.aboutus-page .team-members {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.aboutus-page .team-member {
+  flex: 1;
+  max-width: 300px;
+  background: linear-gradient(135deg, #161179, #261FB3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #261FB3;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.aboutus-page .team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.aboutus-page .contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #161179, #261FB3);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid #261FB3;
+}
+
+.aboutus-page .form-group input,
+.aboutus-page .form-group textarea {
+  width: 95%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #261FB3;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background-color: #161179;
+  color: #FBE4D6;
+}
+
+.aboutus-page .submit-button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  background: #FBE4D6;
+  color: #161179;
+  border: none;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.aboutus-page .submit-button:hover {
+  background: #261FB3;
+  color: #FBE4D6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ======= UPDATED "How It Works" SECTION ======= */
+
+.how-it-works {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #161179, #261FB3);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+}
+
+.step-circle {
+  width: 50px;
+  height: 50px;
+  background: #FBE4D6;
+  color: #161179;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.step-content {
+  text-align: left;
+}
+
+.step-content h3 {
+  font-size: 1.4rem;
+  color: #FBE4D6;
+  margin-bottom: 0.5rem;
+}
+
+.step-content p {
+  font-size: 1rem;
+  color: #FBE4D6;
+}
+
+.member-links {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Ensures center alignment */
+  gap: 12px; /* Adjust spacing between icons */
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  color: #FBE4D6;
+  transition: color 0.3s ease;
+  cursor: pointer;
+  display: flex; /* Ensures proper alignment */
+  align-items: center;
+}
+
+.social-icon:hover {
+  color: #FFD700; /* Change to gold on hover */
+}

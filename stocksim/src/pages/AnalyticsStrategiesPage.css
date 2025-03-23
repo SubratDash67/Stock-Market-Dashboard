@@ -1,7 +1,7 @@
 .analytics-page {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 3rem 3rem;
   font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
   color: #FBE4D6;
   background-color: #0C0950;
@@ -23,7 +23,7 @@
   display: block;
   width: 100px;
   height: 4px;
-  background: linear-gradient(90deg, #FBE4D6, rgba(251, 228, 214, 0.3));
+  background: linear-gradient(90deg, #FBE4D6, #261FB3);
   margin: 1rem auto 0;
   border-radius: 4px;
 }
@@ -62,7 +62,7 @@
   color: #FBE4D6;
   transition: all 0.3s ease;
   font-size: 1rem;
-  width: 100%;
+  width: 90%;
   margin-bottom: 1.5rem;
 }
 

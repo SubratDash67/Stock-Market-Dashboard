@@ -53,7 +53,7 @@ const AuthPage = () => {
     return (
         <div className="auth-page">
             <div className="auth-container">
-                <h2>{isLogin ? "Login" : "Sign Up"}</h2>
+                <h1>{isLogin ? "Login" : "Sign Up"}</h1>
                 {message && <p className="message">{message}</p>}
                 <form onSubmit={handleSubmit}>
                     {!isLogin && (

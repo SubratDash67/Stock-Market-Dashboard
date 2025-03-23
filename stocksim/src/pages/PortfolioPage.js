@@ -7,7 +7,19 @@ const PortfolioPage = () => {
         <div className="portfolio-page">
             {/* Portfolio Overview */}
             <section className="portfolio-overview">
-                <h2>Portfolio Overview</h2>
+                <h1>Portfolio Overview</h1>
+                <p className="section-description">
+                    The Portfolio Overview page provides a "comprehensive summary of your investments", helping you
+                    track total holdings, unrealized gains/losses, and portfolio diversification through visual charts.
+                    The "Day-Wise Summary" section records daily trading activity and profit/loss, giving insights into
+                    short-term performance.
+                    The "10-Day Trade History" logs recent trades, including stock symbols, transaction type (buy/sell),
+                    quantity, price, total value, and profit/loss per trade.
+                    You can also perform key "portfolio actions", such as clearing trade history or topping up your
+                    investment balance.
+                    Use this page to monitor your portfolio's performance, evaluate trading trends, and make informed
+                    investment decisions.
+                </p>
                 <div className="overview-cards">
                     <div className="overview-card">
                         <h3>Total Holdings</h3>
