@@ -20,7 +20,7 @@ const HomePage = () => {
                 <div className="paper-trading-section">
                     <div className="paper-trading-content">
                         <p className="stocksim-notice">
-                            Why Paper Trading Should Be Your First Step Before You Invest Real
+                            Why Paper Trading Should Be Your First Step Before You Invest Real ?
                         </p>
 
                         <p className="section-description">
@@ -40,14 +40,19 @@ const HomePage = () => {
                             <div className="benefit-box">Fine-Tune Your Techniques</div>
                             <div className="benefit-box">Build Confidence and Momentum</div>
                         </div>
+
+                        <button className="read-more-button">Read More</button>
+
                     </div>
                     <img src="./chart.png" alt="Trading Chart" className="chart-image"/>
                 </div>
 
-
                 {/* Top Market Trends */}
                 <section className="market-trends">
                     <h2 className="market-section-title">Market Insights</h2>
+                    <p className="section-descriptionn">
+                        Stay updated with the latest market trends! Here’s a quick look at the top-performing and underperforming stocks, along with a market overview to help you make informed decisions.
+                    </p>
                     <div className="trends-container">
                         <div className="trend-box">
                             <h3>Top Gainers</h3>
@@ -75,10 +80,47 @@ const HomePage = () => {
                         </div>
                     </div>
                 </section>
+                {/* Customer Reviews */}
+                <section className="customer-reviews">
+                    <h2 className="reviews-section-title">What People Say About Us</h2>
+                    <p className="section-descriptionn">
+                        Hear from our users who have experienced the power of AI-driven paper trading. Join thousands of traders
+                        mastering their skills with zero risk!
+                    </p>
+                    <div className="reviews-container">
+                        <div className="review-card">
+                            <img src="./quote.png" alt="Quote Icon" className="quote-icon" />
+                            <p className="review-text">
+                                "This platform has completely changed how I approach trading! The AI insights are spot on, and the
+                                risk-free environment helped me build confidence."
+                            </p>
+                            <h4 className="review-author">— Rohan Mehta</h4>
+                        </div>
+                        <div className="review-card">
+                            <img src="./quote.png" alt="Quote Icon" className="quote-icon" />
+                            <p className="review-text">
+                                "An amazing tool for both beginners and experienced traders. The market insights and paper trading
+                                features are top-notch!"
+                            </p>
+                            <h4 className="review-author">— Priya Sharma</h4>
+                        </div>
+                        <div className="review-card">
+                            <img src="./quote.png" alt="Quote Icon" className="quote-icon" />
+                            <p className="review-text">
+                                "I’ve learned so much about trading without the fear of losing money. Highly recommended!"
+                            </p>
+                            <h4 className="review-author">— Aman Verma</h4>
+                        </div>
+                    </div>
+                </section>
 
                 {/* Quick Access Links */}
                 <section className="quick-access">
-                    <h2 className="section-title">Quick Actions</h2>
+                    <h2 className="access-section-title">Quick Actions</h2>
+                    <p className="section-descriptionn">
+                        Maximize your trading potential with expert insights!
+                        Learn essential strategies, risk management techniques, and the latest market trends to make informed decisions.
+                    </p>
                     <div className="quick-buttons">
                         <button>Trade Now</button>
                         <button>Market Screener</button>
