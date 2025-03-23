@@ -1,8 +1,20 @@
 C:\Users\KIIT\Desktop\Stock-Market-Dashboard
+    ├── api
+    │   ├── databases
+    │   ├── models
+    │   └── pages
+    │       ├── analytics
+    │       ├── auth
+    │       ├── market
+    │       └── trade
     ├── cleaned_data
     │   ├── 20MICRONS-bo.csv
     │   ├── 20MICRONS-ns.csv
     │   └── ... more CSVs (2063 more)
+    ├── nifty
+    │   ├── NIFTY 100.csv
+    │   ├── NIFTY 50.csv
+    │   └── ... more CSVs (10 more)
     ├── stocksim
     │   ├── .idea
     │   │   ├── inspectionProfiles
@@ -12,70 +24,40 @@ C:\Users\KIIT\Desktop\Stock-Market-Dashboard
     │   │   ├── stocksim.iml
     │   │   └── vcs.xml
     │   ├── backend
+    │   │   ├── cache
+    │   │   │   ├── fii_dii_data.json
+    │   │   │   ├── nifty_data.json
+    │   │   │   └── sensex_data.json
     │   │   ├── databases
-    │   │   │   └── auth_db.py
+    │   │   │   └── trade_db.py
     │   │   ├── models
-    │   │   │   ├── __init__.py
-    │   │   │   ├── auth_models.py
-    │   │   │   ├── optimized_lstm_model.h5
-    │   │   │   └── scaler.pkl
+    │   │   │   ├── models.py
+    │   │   │   └── trade_models.py
     │   │   ├── pages
     │   │   │   ├── analytics
+    │   │   │   │   ├── __init__.py
+    │   │   │   │   ├── analysis_strategies.py
     │   │   │   │   ├── analytics_routes.py
-    │   │   │   │   ├── analytics_service.py
-    │   │   │   │   └── stock_data_service.py
+    │   │   │   │   ├── data_processor.py
+    │   │   │   │   ├── final.py
+    │   │   │   │   ├── stock_utils.py
+    │   │   │   │   ├── testanaly.py
+    │   │   │   │   └── testdata.py
     │   │   │   ├── auth
     │   │   │   │   ├── auth_middleware.py
     │   │   │   │   ├── auth_routes.py
-    │   │   │   │   ├── auth_service.py
     │   │   │   │   └── jwt_service.py
-    │   │   │   └── market
-    │   │   │       ├── market_routes.py
-    │   │   │       └── market_service.py
+    │   │   │   ├── market
+    │   │   │   │   ├── market_routes.py
+    │   │   │   │   └── market_service.py
+    │   │   │   └── trade
+    │   │   │       ├── trade_routes.py
+    │   │   │       └── trade_service.py
     │   │   ├── stocks-list
     │   │   │   ├── BO_stocks.txt
     │   │   │   └── NS_stocks.txt
-    │   │   ├── training
-    │   │   │   ├── large_data_20250214_001456.joblib
-    │   │   │   ├── large_data_20250214_100812.joblib
-    │   │   │   ├── lstm_stock_model.h5
-    │   │   │   ├── optimized_training_history.pkl
-    │   │   │   ├── saved_session.pkl
-    │   │   │   ├── saved_session_20250214_001456.pkl
-    │   │   │   ├── saved_session_20250214_100812.pkl
-    │   │   │   ├── stock_lstm_checkpoint_20250214_001456.keras
-    │   │   │   ├── stock_lstm_checkpoint_20250214_100812.keras
-    │   │   │   ├── training_history_plot_20250214_100812.png
-    │   │   │   ├── X_stock_sequences.npy
-    │   │   │   ├── y_stock_targets.npy
-    │   │   │   ├── training_history_20250214_001456.csv
-    │   │   │   └── training_history_20250214_100812.csv
-    │   │   ├── tuning_results
-    │   │   │   └── lstm_tuning
-    │   │   │       ├── trial_0000
-    │   │   │       │   ├── build_config.json
-    │   │   │       │   ├── checkpoint.weights.h5
-    │   │   │       │   └── trial.json
-    │   │   │       ├── trial_0001
-    │   │   │       │   ├── build_config.json
-    │   │   │       │   ├── checkpoint.weights.h5
-    │   │   │       │   └── trial.json
-    │   │   │       ├── trial_0002
-    │   │   │       │   ├── build_config.json
-    │   │   │       │   ├── checkpoint.weights.h5
-    │   │   │       │   └── trial.json
-    │   │   │       ├── trial_0003
-    │   │   │       │   ├── build_config.json
-    │   │   │       │   ├── checkpoint.weights.h5
-    │   │   │       │   └── trial.json
-    │   │   │       ├── trial_0004
-    │   │   │       │   ├── build_config.json
-    │   │   │       │   ├── checkpoint.weights.h5
-    │   │   │       │   └── trial.json
-    │   │   │       ├── trial_0005
-    │   │   │       │   └── trial.json
-    │   │   │       ├── oracle.json
-    │   │   │       └── tuner0.json
+    │   │   ├── utils
+    │   │   │   └── stock_utils.py
     │   │   ├── app.py
     │   │   ├── auth.db
     │   │   ├── config.py
@@ -84,14 +66,22 @@ C:\Users\KIIT\Desktop\Stock-Market-Dashboard
     │   │   ├── output.pdf
     │   │   ├── output.png
     │   │   ├── stock_data.json
+    │   │   ├── trade_data.db
     │   │   └── stock_data.csv
     │   ├── public
+    │   │   ├── facebook.png
     │   │   ├── favicon.ico
+    │   │   ├── footer.png
     │   │   ├── index.html
+    │   │   ├── instagram.png
+    │   │   ├── logo.png
     │   │   ├── logo192.png
     │   │   ├── logo512.png
     │   │   ├── manifest.json
-    │   │   └── robots.txt
+    │   │   ├── remove.png
+    │   │   ├── robots.txt
+    │   │   ├── telegram.png
+    │   │   └── twitter.png
     │   ├── src
     │   │   ├── components
     │   │   │   ├── Footer.css
@@ -126,13 +116,12 @@ C:\Users\KIIT\Desktop\Stock-Market-Dashboard
     │   │   ├── reportWebVitals.js
     │   │   └── setupTests.js
     │   ├── .gitignore
-    │   ├── components.json
     │   ├── package-lock.json
     │   ├── package.json
-    │   ├── README.md
-    │   └── tailwind.config.js
+    │   └── README.md
     ├── .env
     ├── .gitignore
+    ├── backend function check.txt
     ├── directory_tree.txt
     ├── README.md
     ├── sync.bat

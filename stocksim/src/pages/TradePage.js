@@ -12,7 +12,6 @@ const TradePage = () => {
     const [message, setMessage] = useState("");
     const [portfolio, setPortfolio] = useState([]);
     const [basket, setBasket] = useState([]);
-    const userId = 1;
     const [livePrice, setLivePrice] = useState(null);
     const [livePrices, setLivePrices] = useState({});
 
@@ -73,7 +72,7 @@ const TradePage = () => {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        if (e) e.preventDefault();
         handleTrade("buy");
     };
 
@@ -260,7 +259,7 @@ const TradePage = () => {
                     )}
 
                     <div className="trade-buttons">
-                        <button type="submit">Buy</button>
+                        <button type="button" onClick={confirmTrade}>Buy</button>
                         <button type="button" onClick={handleSell}>Sell</button>
                         <button type="button" onClick={clearForm}>Clear</button>
                         <button type="button" onClick={addTradeToBasket}>Add Trade to Basket</button>

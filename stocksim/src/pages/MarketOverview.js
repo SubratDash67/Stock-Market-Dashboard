@@ -286,13 +286,11 @@ const MarketOverview = () => {
                             <span style={{
                                 position: "absolute",
                                 left: "0",
-                                transform: "translateY(-50%)",
-                                transform: "translateX(-120%)"
+                                transform: "translateY(-50%) translateX(-120%)"
                             }}>Undervalued</span>
                             <span style={{
                                 position: "absolute",
                                 right: "0",
-                                transform: "translateY(-50%)",
                                 transform: "translateX(120%)"
                             }}>Overvalued</span>
                         </div>
