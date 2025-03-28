@@ -137,7 +137,6 @@ C:\Users\KIIT\Desktop\Stock-Market-Dashboard
     │   └── README.md
     ├── .env
     ├── .gitignore
-    ├── backend function check.txt
     ├── directory_tree.txt
     ├── README.md
     ├── requirements.txt
