@@ -58,6 +58,7 @@ C:\Users\KIIT\Desktop\Stock-Market-Dashboard
     │   │   │   └── NS_stocks.txt
     │   │   ├── utils
     │   │   │   └── stock_utils.py
+    │   │   ├── .env
     │   │   ├── app.py
     │   │   ├── auth.db
     │   │   ├── config.py
@@ -68,7 +69,21 @@ C:\Users\KIIT\Desktop\Stock-Market-Dashboard
     │   │   ├── stock_data.json
     │   │   ├── trade_data.db
     │   │   └── stock_data.csv
+    │   ├── build
+    │   │   ├── facebook.png
+    │   │   ├── favicon.ico
+    │   │   ├── footer.png
+    │   │   ├── instagram.png
+    │   │   ├── logo.png
+    │   │   ├── logo192.png
+    │   │   ├── logo512.png
+    │   │   ├── manifest.json
+    │   │   ├── remove.png
+    │   │   ├── robots.txt
+    │   │   ├── telegram.png
+    │   │   └── twitter.png
     │   ├── public
+    │   │   ├── chart.png
     │   │   ├── facebook.png
     │   │   ├── favicon.ico
     │   │   ├── footer.png
@@ -78,6 +93,7 @@ C:\Users\KIIT\Desktop\Stock-Market-Dashboard
     │   │   ├── logo192.png
     │   │   ├── logo512.png
     │   │   ├── manifest.json
+    │   │   ├── quote.png
     │   │   ├── remove.png
     │   │   ├── robots.txt
     │   │   ├── telegram.png
@@ -124,5 +140,6 @@ C:\Users\KIIT\Desktop\Stock-Market-Dashboard
     ├── backend function check.txt
     ├── directory_tree.txt
     ├── README.md
+    ├── requirements.txt
     ├── sync.bat
     └── tree.py
